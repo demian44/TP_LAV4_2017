@@ -1,0 +1,40 @@
+<table class="table-bordered" style="margin-left:30%">
+
+  <tbody>
+    <tr *ngFor="let row of rows">
+      <td style="width:20px">
+        {{row.name}}
+      </td>
+      <td (click)="Misilazo(row,0)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[0]}}</td>
+      <td (click)="Misilazo(row,1)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[1]}}</td>
+      <td (click)="Misilazo(row,2)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[2]}}</td>
+      <td (click)="Misilazo(row,3)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[3]}}</td>
+      <td (click)="Misilazo(row,4)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[4]}}</td>
+      <td (click)="Misilazo(row,5)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[5]}}</td>
+      <td (click)="Misilazo(row,6)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[6]}}</td>
+      <td (click)="Misilazo(row,7)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[7]}}</td>
+      <td (click)="Misilazo(row,8)" style="width:60px; height:60px;text-align: center">
+        {{row.columns[8]}}</td>
+    </tr>
+    <tr>
+      <td style="height:5px"> </td>
+      <td> 1 </td>
+      <td> 2 </td>
+      <td> 3 </td>
+      <td> 4 </td>
+      <td> 5 </td>
+      <td> 6 </td>
+      <td> 7 </td>
+      <td> 8 </td>
+      <td> 9 </td>
+    </tr>
+  </tbody>
+</table>
