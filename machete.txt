@@ -1,0 +1,1 @@
+menu-card.component: Este el el componente que contiene las tarjetas del menu para acceder al juego.
