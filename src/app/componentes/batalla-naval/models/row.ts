@@ -1,10 +1,13 @@
+
+
+import {NOSHOT } from './ship';
 export class Row {
   /*****************  Atributos  *****************/
-  public _name: string;
+  private _name: string;
   public get name(): string {
     return this._name;
   }
-  public _columns: string[];
+  private _columns: string[];
   public get columns(): string[] {
     return this._columns;
   }
@@ -16,9 +19,16 @@ export class Row {
     this._isEmpty = isEmpty;
   }
   /***************** End  Atributos  *****************/
-  constructor(name: string, columns: string[]) {
+  /**
+   * 
+   * @param name nombre de la fila
+   * @param columns cantidad de columnas
+   */
+  constructor(name: string, columns: number) {
     this._name = name;
-    this._columns = columns;
+    this._columns = [];
+    for(let i=0;i<columns;i++)
+      this._columns.push(NOSHOT);
     this._isEmpty = false;
   }
 }

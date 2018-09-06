@@ -2,13 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
-import { Ship, UNDID, VERTICAL, HORIZONTAL } from './models/ship';
+import { Ship, UNDID, VERTICAL, HORIZONTAL,NOSHOT } from './models/ship';
 import { ShipPart, SHOOTED, SAFE } from './models/ship-part';
 import { Row } from './models/row';
 import { AppComponent } from './../../app.component';
 import { IBatallaNavalComponent } from './interfaces/ibatalla-naval-component';
 
-export const NOSHOT: string = " ";
+
 export const WATER: string = " X ";
 
 @Component({
@@ -43,13 +43,13 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     this._won = false;
     this._rowsName = ["a", "b", "c", "d", "e", "f", "g"]
     this._rows = [
-      new Row(this._rowsName[0], [NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT]),
-      new Row(this._rowsName[1], [NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT]),
-      new Row(this._rowsName[2], [NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT]),
-      new Row(this._rowsName[3], [NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT]),
-      new Row(this._rowsName[4], [NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT]),
-      new Row(this._rowsName[5], [NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT]),
-      new Row(this._rowsName[6], [NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT, NOSHOT]),
+      new Row(this._rowsName[0],9),
+      new Row(this._rowsName[1],9),
+      new Row(this._rowsName[2],9),
+      new Row(this._rowsName[3],9),
+      new Row(this._rowsName[4],9),
+      new Row(this._rowsName[5],9),
+      new Row(this._rowsName[6],9),
     ];
   }
 
@@ -115,8 +115,8 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     if (this._ships[index].sense == HORIZONTAL) {
       this._ships[index].parts.forEach((part: ShipPart) => {
         this._rows.forEach((row: Row) => {
-          if (row._name == part.rowName) {
-            row._columns[part.column] = UNDID;
+          if (row.name == part.rowName) {
+            row.columns[part.column] = UNDID;
           }
         })
       })
@@ -134,7 +134,7 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
       }
       while (length != 0) {
         //Pariendo del Id que encontré voy a ir bajando uno a uno hasta que cambio todos.
-        this.rows[rowID]._columns[column] = UNDID;
+        this.rows[rowID].columns[column] = UNDID;
         rowID++;
         length--;
       }

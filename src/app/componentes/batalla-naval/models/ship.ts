@@ -5,7 +5,7 @@ export const VERTICAL: string = "vertical";
 export const HORIZONTAL: string = "horizontal";
 export const UNDID: string = "undid";
 export const FLOATING: string = "flotando";
-
+export const NOSHOT: string = " ";
 
 export class Ship implements IShip {
 
