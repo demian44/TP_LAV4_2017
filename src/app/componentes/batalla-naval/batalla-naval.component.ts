@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
-import { Ship, UNDID, VERTICAL, HORIZONTAL,NOSHOT } from './models/ship';
+import { Ship, UNDID, VERTICAL, HORIZONTAL, NOSHOT } from './models/ship';
 import { ShipPart, SHOOTED, SAFE } from './models/ship-part';
 import { Row } from './models/row';
 import { AppComponent } from './../../app.component';
@@ -10,6 +10,7 @@ import { IBatallaNavalComponent } from './interfaces/ibatalla-naval-component';
 
 
 export const WATER: string = " X ";
+export const COLUMNS: number = 9;
 
 @Component({
   selector: 'app-batalla-naval',
@@ -43,25 +44,18 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     this._won = false;
     this._rowsName = ["a", "b", "c", "d", "e", "f", "g"]
     this._rows = [
-      new Row(this._rowsName[0],9),
-      new Row(this._rowsName[1],9),
-      new Row(this._rowsName[2],9),
-      new Row(this._rowsName[3],9),
-      new Row(this._rowsName[4],9),
-      new Row(this._rowsName[5],9),
-      new Row(this._rowsName[6],9),
+      new Row(this._rowsName[0], COLUMNS),
+      new Row(this._rowsName[1], COLUMNS),
+      new Row(this._rowsName[2], COLUMNS),
+      new Row(this._rowsName[3], COLUMNS),
+      new Row(this._rowsName[4], COLUMNS),
+      new Row(this._rowsName[5], COLUMNS),
+      new Row(this._rowsName[6], COLUMNS),
     ];
   }
 
   ngOnInit(): void {
-    let shipFour: Ship = new Ship(4, this._rowsName[1], 1, HORIZONTAL);
-    let shipThree: Ship = new Ship(3, this._rowsName[3], 2, VERTICAL);
-    let shipThree_: Ship = new Ship(3, this._rowsName[3], 4, HORIZONTAL);
-    let shipTwo: Ship = new Ship(2, this._rowsName[5], 4, HORIZONTAL);
-    let shipOne: Ship = new Ship(1, this._rowsName[6], 7, HORIZONTAL);
-    this._ships.push(shipFour, shipThree, shipThree_, shipTwo, shipOne);
-    console.log(shipFour);
-
+    this.putShips();
   }
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
@@ -139,6 +133,61 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
         length--;
       }
     }
+  }
+
+
+
+  private putShips2(): void {
+    let shipFour: Ship = new Ship(4, this._rowsName[1], 1, HORIZONTAL);
+    let shipThree: Ship = new Ship(3, this._rowsName[3], 2, VERTICAL);
+    let shipThree_: Ship = new Ship(3, this._rowsName[3], 4, HORIZONTAL);
+    let shipTwo: Ship = new Ship(2, this._rowsName[5], 4, HORIZONTAL);
+    let shipOne: Ship = new Ship(1, this._rowsName[6], 7, HORIZONTAL);
+    this._ships.push(shipFour, shipThree, shipThree_, shipTwo, shipOne);
+  }
+
+  private putShips(): void {
+
+    let sense: number = Math.floor(Math.random() * 2);
+    let rowIndex: number = Math.floor(Math.random() * 4);
+    let shipFour: Ship = new Ship(4, this._rowsName[rowIndex], Math.floor(Math.random() * 6), sense);
+    let shipThree: Ship;
+    let shipThree_: Ship;
+    let shipTwo: Ship;
+    let shipOne: Ship;
+    do {
+      sense = Math.floor(Math.random() * 2);
+      rowIndex = Math.floor(Math.random() * 5);
+      shipThree = new Ship(3, this._rowsName[rowIndex], Math.floor(Math.random() * 7), sense);
+      
+    } while (shipFour.isTouched(shipThree));
+
+    // do {
+    //   sense = Math.floor(Math.random() * 2);
+    //   rowIndex = Math.floor(Math.random() * 5);
+    //   shipThree_ = new Ship(3, this._rowsName[rowIndex], Math.floor(Math.random() * 7), sense);
+    
+    // } while (shipFour.isTouched(shipThree_) || shipThree.isTouched(shipThree_));
+
+
+    do {
+      sense = Math.floor(Math.random() * 2);
+      rowIndex = Math.floor(Math.random() * 6);
+      shipTwo = new Ship(2, this._rowsName[rowIndex], Math.floor(Math.random() * 8), sense);
+      
+    } while (shipFour.isTouched(shipTwo) || shipThree.isTouched(shipTwo)
+    /*|| shipThree_.isTouched(shipTwo)*/);
+
+    do {
+      sense = Math.floor(Math.random() * 2);
+      rowIndex = Math.floor(Math.random() * 6);
+      shipOne = new Ship(1, this._rowsName[rowIndex], Math.floor(Math.random() * 9), sense);
+      
+    } while (shipFour.isTouched(shipOne) || shipThree.isTouched(shipOne)
+    /*|| shipThree_.isTouched(shipOne)*/ || shipTwo.isTouched(shipOne));
+
+    this._ships.push(shipFour, shipThree/*, shipThree_*/, shipTwo, shipOne);
+    console.log(this._ships);
   }
   /***************** End Methods  *****************/
 }
