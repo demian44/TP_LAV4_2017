@@ -9,6 +9,9 @@ import { Component, OnInit , Input, EventEmitter} from '@angular/core';
 export class ListadoDeResultadosComponent implements OnInit {
  @Input()
  listado: Array<any>;
+ 
+ @Input()
+ prueba: string;
 
 
   constructor() {

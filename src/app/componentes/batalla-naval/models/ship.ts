@@ -100,8 +100,8 @@ export class Ship implements IShip {
     isTouched(ship: Ship): boolean {
         let touched: boolean = false;
         if (this.sense == ship.sense) {
-            if ((HORIZONTAL == this.sense && this._parts[0].column == ship.parts[0].column)
-                || (VERTICAL == this.sense && this._parts[0].rowName == ship.parts[0].rowName)) {
+            if ((HORIZONTAL == this.sense && this._parts[0].rowName == ship.parts[0].rowName)
+                || (VERTICAL == this.sense && this._parts[0].column == ship.parts[0].column)) {
                 touched = true;
             }
         }

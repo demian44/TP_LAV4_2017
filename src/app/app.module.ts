@@ -54,6 +54,7 @@ import { AgmCoreModule } from '@agm/core';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
 import { BatallaNavalComponent } from './componentes/batalla-naval/batalla-naval.component';
+import { CounterComponent } from './componentes/counter/counter.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { BatallaNavalComponent } from './componentes/batalla-naval/batalla-naval
     JugadoresListadoComponent,
     InputJugadoresComponent,
     SexoPipe,
-    BatallaNavalComponent
+    BatallaNavalComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,

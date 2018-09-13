@@ -10,7 +10,7 @@ import { IBatallaNavalComponent } from './interfaces/ibatalla-naval-component';
 
 
 export const WATER: string = " X ";
-export const COLUMNS: number = 9;
+export const COLUMNS: number = 7;
 
 @Component({
   selector: 'app-batalla-naval',
@@ -23,6 +23,12 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
   public get won(): boolean {
     return this._won;
   }
+  private _counter: number;
+  public get counter(): number {
+    return this._counter;
+  }
+
+  private _point: number;
   private _rows: Row[];
   public get rows(): Row[] {
     return this._rows;
@@ -42,20 +48,21 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     this._ships = [];
     this._sunkenShips = 0;
     this._won = false;
-    this._rowsName = ["a", "b", "c", "d", "e", "f", "g"]
+    this._rowsName = ["a", "b", "c", "d", "e", "f"]
     this._rows = [
       new Row(this._rowsName[0], COLUMNS),
       new Row(this._rowsName[1], COLUMNS),
       new Row(this._rowsName[2], COLUMNS),
       new Row(this._rowsName[3], COLUMNS),
       new Row(this._rowsName[4], COLUMNS),
-      new Row(this._rowsName[5], COLUMNS),
-      new Row(this._rowsName[6], COLUMNS),
+      new Row(this._rowsName[5], COLUMNS)
     ];
   }
 
   ngOnInit(): void {
     this.putShips();
+    this._counter = 15;
+    this._point = 300;
   }
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
@@ -73,9 +80,11 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
       console.log("Entro");
       let flagShooted: boolean = false;
       let newState: string = WATER;
+      let i: number;
 
-      for (let i = 0; i < this._ships.length; i++) {
+      for (i = 0; i < this._ships.length; i++) {
         if (this._ships[i].shooted(selectedRow.name, column)) {
+          this._point += 15;
           newState = SHOOTED;
 
           if (this._ships[i].state == UNDID) {
@@ -85,7 +94,11 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
           }
           break;
         }
+        else {
+          this._point -= 10;
+        }
       }
+      if (this._ships.length == i) this._counter--;
 
       this._rows.forEach(row => {
         if (row.name == selectedRow.name)
@@ -135,58 +148,39 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     }
   }
 
-
-
-  private putShips2(): void {
-    let shipFour: Ship = new Ship(4, this._rowsName[1], 1, HORIZONTAL);
-    let shipThree: Ship = new Ship(3, this._rowsName[3], 2, VERTICAL);
-    let shipThree_: Ship = new Ship(3, this._rowsName[3], 4, HORIZONTAL);
-    let shipTwo: Ship = new Ship(2, this._rowsName[5], 4, HORIZONTAL);
-    let shipOne: Ship = new Ship(1, this._rowsName[6], 7, HORIZONTAL);
-    this._ships.push(shipFour, shipThree, shipThree_, shipTwo, shipOne);
-  }
-
   private putShips(): void {
 
     let sense: number = Math.floor(Math.random() * 2);
     let rowIndex: number = Math.floor(Math.random() * 4);
-    let shipFour: Ship = new Ship(4, this._rowsName[rowIndex], Math.floor(Math.random() * 6), sense);
     let shipThree: Ship;
-    let shipThree_: Ship;
     let shipTwo: Ship;
     let shipOne: Ship;
+
+    let shipFour: Ship = new Ship(4, this._rowsName[rowIndex], Math.floor(Math.random() * 3), sense);
+
     do {
       sense = Math.floor(Math.random() * 2);
       rowIndex = Math.floor(Math.random() * 5);
-      shipThree = new Ship(3, this._rowsName[rowIndex], Math.floor(Math.random() * 7), sense);
-      
+      shipThree = new Ship(3, this._rowsName[rowIndex], Math.floor(Math.random() * 4), sense);
+
     } while (shipFour.isTouched(shipThree));
 
-    // do {
-    //   sense = Math.floor(Math.random() * 2);
-    //   rowIndex = Math.floor(Math.random() * 5);
-    //   shipThree_ = new Ship(3, this._rowsName[rowIndex], Math.floor(Math.random() * 7), sense);
-    
-    // } while (shipFour.isTouched(shipThree_) || shipThree.isTouched(shipThree_));
-
+    do {
+      sense = Math.floor(Math.random() * 2);
+      rowIndex = Math.floor(Math.random() * 6);
+      shipTwo = new Ship(2, this._rowsName[rowIndex], Math.floor(Math.random() * 5), sense);
+    } while (shipFour.isTouched(shipTwo) || shipThree.isTouched(shipTwo));
 
     do {
       sense = Math.floor(Math.random() * 2);
       rowIndex = Math.floor(Math.random() * 6);
-      shipTwo = new Ship(2, this._rowsName[rowIndex], Math.floor(Math.random() * 8), sense);
-      
-    } while (shipFour.isTouched(shipTwo) || shipThree.isTouched(shipTwo)
-    /*|| shipThree_.isTouched(shipTwo)*/);
-
-    do {
-      sense = Math.floor(Math.random() * 2);
-      rowIndex = Math.floor(Math.random() * 6);
-      shipOne = new Ship(1, this._rowsName[rowIndex], Math.floor(Math.random() * 9), sense);
-      
+      shipOne = new Ship(1, this._rowsName[rowIndex], Math.floor(Math.random() * 6), sense);
     } while (shipFour.isTouched(shipOne) || shipThree.isTouched(shipOne)
-    /*|| shipThree_.isTouched(shipOne)*/ || shipTwo.isTouched(shipOne));
+      || shipTwo.isTouched(shipOne));
 
-    this._ships.push(shipFour, shipThree/*, shipThree_*/, shipTwo, shipOne);
+
+
+    this._ships.push(shipFour, shipThree, shipTwo, shipOne);
     console.log(this._ships);
   }
   /***************** End Methods  *****************/
