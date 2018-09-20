@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+.imagenPrincipal {
+    background-image: url("./assets/imagenes/Mario_Principal.jpg");
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.anagramsWord{
+    /* color:rgb(224, 224, 224); */
+    color: #FFF;
+    text-align: center;
+    font-weight: 30;
+    font:  8px arial, Serif;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0)
+}
+
+ 
+.myShadow{
+    
+    -webkit-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 19.15) !important;
+}

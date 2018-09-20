@@ -1,52 +1,38 @@
 <div class="container">
-  <div class="card">
-    <img class="img-thumbnail" src="./assets/imagenes/cerebro.jpg" alt="Avatar" style="width:100%">
-    <h1>Velocidad y agilidad aritmética </h1>
-    <p class="title">Juego de agilidad mental</p>
-    <p>UTN FRA </p>
-
-    <a href="#"><i class="fa fa-dribbble"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <p> <button class="button" (click)="Juego('Agilidad')">Jugar</button></p>
-
+  <div class="card" (click)="Juego('Agilidad')">
+    <img class="" src="./assets/imagenes/cerebro.jpg" alt="Avatar" style="width:100%">
+    <button class="btn btn-default" title="{{velocidadTitle}}" target="_blank" style="background-image:url('./assets/imagenes/gris.jpg');color: rgb(167, 167, 167);border-radius: 0px  0 4px 4px">
+      <h6> Velocidad y agilidad aritmética </h6>
+    </button>
   </div>
 
-  <div class="card">
-    <img class="img-thumbnail" src="./assets/imagenes/ppt.jpg" alt="Avatar" style="width:100%">
-    <h1>Piedra Papel o Tijera</h1><br><br>
-    <p class="title">Juega contra la máquina</p>
-    <p>UTN FRA </p>
-
-    <a href="#"><i class="fa fa-dribbble"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <p> <button class="button" (click)="Juego('PPT')">Jugar</button></p>
+  <div class="card" (click)="Juego('ppt')">
+    <img class="" src="./assets/imagenes/ppt.jpg" alt="Avatar" style="width:100%">
+    <button class="btn btn-default" title="{{piedraTitle}}" target="_blank" style="background-image:url('./assets/imagenes/gris.jpg');color: rgb(167, 167, 167);border-radius: 0px  0 4px 4px">
+      <h6> Piedra Papel o Tijera </h6>
+    </button>
   </div>
-  <div class="card">
-    <img class="img-thumbnail" src="./assets/imagenes/adivina.png" alt="Avatar" style="width:100%">
-    <h1>Adivina el número secreto</h1><br><br>
-    <p class="title">Juego de estrategia</p>
-    <p>UTN FRA </p>
-
-    <a href="#"><i class="fa fa-dribbble"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <p> <button class="button" (click)="Juego('Adivina')">Jugar</button></p>
+  <div class="card" (click)="Juego('Adivina')">
+    <img class="" src="./assets/imagenes/adivina.png" alt="Avatar" style="width:100%">
+    <button class="btn btn-default" title="{{adivinaTitle}}" target="_blank" style="background-image:url('./assets/imagenes/gris.jpg');color: rgb(167, 167, 167);border-radius: 0px  0 4px 4px">
+      <h6> Adivina el número secreto </h6>
+    </button>
   </div>
-
-  <div class="card">
-    <img class="img-thumbnail" src="./assets/imagenes/naval.png" alt="Avatar" style="width:100%">
-    <h1>Batalla naval</h1><br><br>
-    <p class="title">Capacidad deduciva</p>
-    <p>Demian</p>
-
-    <a href="#"><i class="fa fa-dribbble"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <p> <button class="button" (click)="Juego('Batalla-Naval')">Jugar</button></p>
+  <div class="card"  title="{{navalTitle}}" (click)="Juego('Batalla-Naval')">
+    <img class="" src="./assets/imagenes/naval.png" alt="Avatar" style="width:100%">
+    <button class="btn btn-default" target="_blank" style="background-image:url('./assets/imagenes/gris.jpg');color: rgb(167, 167, 167);border-radius: 0px  0 4px 4px">
+      <h6> Batalla naval </h6>
+    </button>
+  </div>
+  <div class="card"  title="{{anagramalTitle}}" (click)="Juego('anagrama')">
+    <img class="" src="./assets/imagenes/anagrama.jpg" alt="Avatar" style="width:100%">
+    <button class="btn btn-default" target="_blank" style="background-image:url('./assets/imagenes/gris.jpg');color: rgb(167, 167, 167);border-radius: 0px  0 4px 4px">
+      <h6> Anagrama </h6>
+    </button>
+  </div>
+  <div class="card"  title="{{tatetilTitle}}" (click)="Juego('tateti')">
+    <img class="" src="./assets/imagenes/tateti.jpg" alt="Avatar" style="width:100%">
+    <button class="btn btn-default" target="_blank" style="background-image:url('./assets/imagenes/gris.jpg');color: rgb(167, 167, 167);border-radius: 0px  0 4px 4px">
+      <h6> Ta Te Ti </h6>
+    </button>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -42,6 +42,7 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     return this._ships;
   }
   private _rowsName: string[];
+  private messege: string;
   /*****************  End Atributos  *****************/
 
   constructor() {
@@ -58,8 +59,9 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
       new Row(this._rowsName[5], COLUMNS)
     ];
   }
-
+  @Output() eventPopUp:EventEmitter<string> = new EventEmitter<string>();
   ngOnInit(): void {
+    this.messege = "GANASTE";
     this.putShips();
     this._counter = 15;
     this._point = 300;
@@ -182,6 +184,10 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
 
     this._ships.push(shipFour, shipThree, shipTwo, shipOne);
     console.log(this._ships);
+  }
+
+  timeOut(messege:string){
+    this.eventPopUp.emit(messege);
   }
   /***************** End Methods  *****************/
 }

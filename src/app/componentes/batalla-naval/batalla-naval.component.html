@@ -1,33 +1,42 @@
- <div>
-  <app-counter [counter]="counter"></app-counter>
- </div>
-<table class="table-bordered" style="margin-left:30%">
-  <tbody>
-    <tr *ngFor="let row of rows">
-      <td style="width:30px">
-        {{row.name}}
-      </td>
-      <td (click)="Misilazo(row,0)" style="width:60px; height:60px;text-align: center">
-        {{row.columns[0]}}</td>
-      <td (click)="Misilazo(row,1)" style="width:60px; height:60px;text-align: center">
-        {{row.columns[1]}}</td>
-      <td (click)="Misilazo(row,2)" style="width:60px; height:60px;text-align: center">
-        {{row.columns[2]}}</td>
-      <td (click)="Misilazo(row,3)" style="width:60px; height:60px;text-align: center">
-        {{row.columns[3]}}</td>
-      <td (click)="Misilazo(row,4)" style="width:60px; height:60px;text-align: center">
-        {{row.columns[4]}}</td>
-      <td (click)="Misilazo(row,5)" style="width:60px; height:60px;text-align: center">
-        {{row.columns[5]}}</td>
-    </tr>
-    <tr>
-      <td style="height:5px"> </td>
-      <td> 1 </td>
-      <td> 2 </td>
-      <td> 3 </td>
-      <td> 4 </td>
-      <td> 5 </td>
-      <td> 6 </td>
-    </tr>
-  </tbody>
-</table>
+<app-pop-up [messege]='messege'></app-pop-up>
+<div class="row" style="height:100%">
+  <div class="col-2">
+    <app-lateral-panel (timeOut)='timeOut($event)'></app-lateral-panel>
+    <!-- <app-counter [counter]="counter"></app-counter> -->
+  </div>
+  <div class="col-7">
+    <table class="table-bordered" style="margin-left:5%;color:white">
+      <tbody>
+        <tr *ngFor="let row of rows">
+          <td style="width:30px">
+            {{row.name}}
+          </td>
+          <td (click)="Misilazo(row,0)" style="width:60px; height:60px;text-align: center">
+            {{row.columns[0]}}</td>
+          <td (click)="Misilazo(row,1)" style="width:60px; height:60px;text-align: center">
+            {{row.columns[1]}}</td>
+          <td (click)="Misilazo(row,2)" style="width:60px; height:60px;text-align: center">
+            {{row.columns[2]}}</td>
+          <td (click)="Misilazo(row,3)" style="width:60px; height:60px;text-align: center">
+            {{row.columns[3]}}</td>
+          <td (click)="Misilazo(row,4)" style="width:60px; height:60px;text-align: center">
+            {{row.columns[4]}}</td>
+          <td (click)="Misilazo(row,5)" style="width:60px; height:60px;text-align: center">
+            {{row.columns[5]}}</td>
+        </tr>
+        <tr>
+          <td style="height:5px"> </td>
+          <td> 1 </td>
+          <td> 2 </td>
+          <td> 3 </td>
+          <td> 4 </td>
+          <td> 5 </td>
+          <td> 6 </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-3">
+
+  </div>
+</div>

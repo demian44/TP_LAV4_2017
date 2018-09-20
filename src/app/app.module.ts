@@ -55,6 +55,13 @@ import { InputJugadoresComponent } from './componentes/input-jugadores/input-jug
 import { SexoPipe } from './pipes/sexo.pipe';
 import { BatallaNavalComponent } from './componentes/batalla-naval/batalla-naval.component';
 import { CounterComponent } from './componentes/counter/counter.component';
+import { PiedraTijeraComponent } from './componentes/piedra-tijera/piedra-tijera.component';
+import { TatetiComponent } from './componentes/tateti/tateti.component';
+import { SubTitleComponent } from './componentes/sub-title/sub-title.component';
+import { LateralPanelComponent } from './componentes/lateral-panel/lateral-panel.component';
+import { TimerComponent } from './componentes/timer/timer.component';
+import { PointMeterComponent } from './componentes/point-meter/point-meter.component';
+import { PopUpComponent } from './componentes/pop-up/pop-up.component';
 
 
 @NgModule({
@@ -83,7 +90,14 @@ import { CounterComponent } from './componentes/counter/counter.component';
     InputJugadoresComponent,
     SexoPipe,
     BatallaNavalComponent,
-    CounterComponent
+    CounterComponent,
+    PiedraTijeraComponent,
+    TatetiComponent,
+    SubTitleComponent,
+    LateralPanelComponent,
+    TimerComponent,
+    PointMeterComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,

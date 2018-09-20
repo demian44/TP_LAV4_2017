@@ -1,6 +1,6 @@
 .imagenDeMenu{
-width: 80px;
-height: 70px;
+    margin: -1px -6px;
+    height: 139px;
 }
 
 .hero-text {
@@ -10,4 +10,12 @@ height: 70px;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #100000;
-    }
+}
+
+.principal_button{
+    -webkit-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+background-color: rgb(212, 174, 124);
+border:0px;
+}

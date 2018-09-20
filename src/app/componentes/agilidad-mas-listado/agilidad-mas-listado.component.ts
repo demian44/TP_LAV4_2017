@@ -6,7 +6,6 @@ import { Juego } from '../../clases/juego';
   styleUrls: ['./agilidad-mas-listado.component.css']
 })
 export class AgilidadMasListadoComponent implements OnInit {
-  prueba:string = "LA WEA FOME";
   public listadoParaCompartir: Array<any>;
   constructor() { this.listadoParaCompartir = new Array<any>()}
 

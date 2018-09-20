@@ -1,38 +1,68 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-<!-- index.html -->
 
+<app-sub-title [subTitle]='subTitle'></app-sub-title>
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class="col-6">
+    <div class="row aritmeticaBox" style="Margin:3% 5% 0 5%;width: 100%;border-radius: 5px;align-content:center;padding-top:25px;">
+      <div class="col-4" style="font-size:34px;text-align:center;cursor:pointer;outline:none;color:#fff;">
+        <h2>{{juegosAgilidad[0].numOne}}{{juegosAgilidad[0].operator}}{{juegosAgilidad[0].numTwo}}</h2>
+      </div>
+      <div class="col-4 input">
+        <input [(ngModel)]="juegosAgilidad[0].userResponse" class="form-control" style="width:100%;text-align:center;border-radius:10px"
+          #ctrl="ngModel" type="number">
+      </div>
+      <div class="col-4 input" style="text-align:right">
+        <button [ngClass]="juegosAgilidad[0].classButton" (click)="check(0)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
+    <div class="row aritmeticaBox" style="Margin:3% 5% 0 5%;width: 100%;border-radius: 5px;align-content:center;padding-top:25px;">
+      <div class="col-4" style="font-size:34px;text-align:center;cursor:pointer;outline:none;color:#fff;">
+        <h2>{{juegosAgilidad[1].numOne}}{{juegosAgilidad[1].operator}}{{juegosAgilidad[1].numTwo}}</h2>
+      </div>
+      <div class="col-4 input">
+        <input [(ngModel)]="juegosAgilidad[1].userResponse" class="form-control" style="width:100%;text-align:center;border-radius:10px"
+          #ctrl="ngModel" type="number">
+      </div>
 
-<form name="juego">
-<ul>
-   <!-- <li>
-   Primer número: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-  
-  </li>
-  <li>
-   Operador: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-    
-  </li>
-  <li>
-   Segundo número: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%" readonly/>
-    
-  </li>
-  <li>
-    Respuesta: <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
-     
-   </li>
-  <li>
-    <h2 [hidden]="ocultarVerificar" ><button (click)="verificar()" class="btn btn-success btn-lg">Verificar {{Tiempo}} </button></h2>
-  </li>
-  <li>
-    <h2 [hidden]="!ocultarVerificar"><button  (click)="NuevoJuego()"  class="btn btn-info btn-lg">Nuevo</button></h2>
-  </li>
-  <li>
-    <h2><p><i class="fa fa-spinner fa-spin"></i>Esperando numero...</p></h2>
+      <div class="col-4 input" style="text-align:right">
+        <button [ngClass]="juegosAgilidad[1].classButton" (click)="check(1)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
+    <div class="row aritmeticaBox" style="Margin:3% 5% 0 5%;width: 100%;border-radius: 5px;align-content:center;padding-top:25px;">
+      <div class="col-4" style="font-size:34px;text-align:center;cursor:pointer;outline:none;color:#fff;">
+        <h2>{{juegosAgilidad[2].numOne}}{{juegosAgilidad[2].operator}}{{juegosAgilidad[2].numTwo}}</h2>
+      </div>
+      <div class="col-4 input">
+        <input [(ngModel)]="juegosAgilidad[2].userResponse" class="form-control" style="width:100%;text-align:center;border-radius:10px"
+          #ctrl="ngModel" type="number">
+      </div>
 
-    <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-    <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
-  </li> -->
-</ul>
-
-</form>
+      <div class="col-4 input" style="text-align:right">
+        <button [ngClass]="juegosAgilidad[2].classButton" (click)="check(2)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
+    <div class="row aritmeticaBox" style="Margin:3% 5% 0 5%;width: 100%;border-radius: 5px;align-content:center;padding-top:25px;">
+      <div class="col-4" style="font-size:34px;text-align:center;cursor:pointer;outline:none;color:#fff;">
+        <h2>{{juegosAgilidad[3].numOne}}{{juegosAgilidad[3].operator}}{{juegosAgilidad[3].numTwo}}</h2>
+      </div>
+      <div class="col-4 input">
+        <input [(ngModel)]="juegosAgilidad[3].userResponse" class="form-control" style="width:100%;text-align:center;border-radius:10px"
+          #ctrl="ngModel" type="number">
+      </div>
+      <div class="col-4 input" style="text-align:right">
+        <button [ngClass]="juegosAgilidad[3].classButton" (click)="check(3)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+  </div>
+</div>

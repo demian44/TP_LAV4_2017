@@ -1,0 +1,30 @@
+.aritmeticaBox{
+    width: 400px;
+    padding: 15px;
+    font-family: 'Roboto',sans-serif;
+    box-shadow: 10px 13px 50px -15px rgba(0, 0, 0, 0.904);
+    margin:25px;
+    background:rgba(139, 139, 139, 0.8);  
+    color:black;
+}
+
+
+.operaor{
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+}
+
+
+.btn-outline-agilidad{color:#ff8b07;background-color:transparent;background-image:none;border-color:#ff8b07}
+.btn-outline-agilidad:hover{color:#212529;background-color:#ff8b07;border-color:#ff8b07}
+.btn-outline-agilidad.focus,.btn-outline-agilidad:focus{box-shadow:0 0 0 .2rem rgba(255,193,7,.5)}
+.btn-outline-agilidad.disabled,.btn-outline-agilidad:disabled{color:#ff8b07;background-color:transparent}
+.btn-outline-agilidad:not(:disabled):not(.disabled).active,
+.btn-outline-agilidad:not(:disabled):not(.disabled):active,
+.show>.btn-outline-agilidad
+.dropdown-toggle{color:#212529;background-color:#ff8b07;border-color:#ff8b07}
+.btn-outline-agilidad:not(:disabled):not(.disabled).active:focus,.btn-outline-agilidad:not(:disabled):not(.disabled):active:focus,
+.show>.btn-outline-agilidad.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(255,193,7,.5)}

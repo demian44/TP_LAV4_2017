@@ -6,12 +6,19 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./menu-card.component.css']
 })
 export class MenuCardComponent implements OnInit {
-
+  velocidadTitle:string;
+  piedraTitle:string;
+  adivinaTitle:string;
+  navalTitle:string;
   constructor(private route: ActivatedRoute,
     private router: Router) { }
-
-
-  ngOnInit() {
+    
+    
+    ngOnInit() {
+      this.velocidadTitle = " Juego de agilidad mental! ";
+      this.piedraTitle = " Juega contra la máquina! ";
+      this.adivinaTitle= " Juego de estrategia! ";
+      this.navalTitle = " Unde los barcos de la maquina! "
   }
   Juego(tipo: string) {
     switch (tipo) {
@@ -29,6 +36,15 @@ export class MenuCardComponent implements OnInit {
         break;
       case 'Batalla-Naval':
           this.router.navigate(['/Juegos/Batalla-Naval']);
+        break;
+      case 'ppt':
+          this.router.navigate(['/Juegos/piedra-tijera']);
+        break;
+      case 'anagrama':
+          this.router.navigate(['/Juegos/anagrama']);
+        break;
+      case 'tateti':
+          this.router.navigate(['/Juegos/tateti']);
         break;
     }
   }

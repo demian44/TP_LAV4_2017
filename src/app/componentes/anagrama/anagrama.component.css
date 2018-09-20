@@ -1,0 +1,28 @@
+.anagramaBox{
+    width: 400px;
+    padding: 15px;
+    font-family: 'Roboto',sans-serif;
+    box-shadow: 10px 13px 50px -15px rgba(0, 0, 0, 0.904);
+    margin:25px;
+    background:rgba(199, 193, 255, 0.1);
+    color:black;
+}
+
+/* .btn-outline-anagrama {
+    color: #ff8b07;
+    background-color: transparent;
+    background-image: none;
+    border-color: #ff8b07;
+} */
+
+
+.btn-outline-anagrama{color:#ff8b07;background-color:transparent;background-image:none;border-color:#ff8b07}
+.btn-outline-anagrama:hover{color:#212529;background-color:#ff8b07;border-color:#ff8b07}
+.btn-outline-anagrama.focus,.btn-outline-anagrama:focus{box-shadow:0 0 0 .2rem rgba(255,193,7,.5)}
+.btn-outline-anagrama.disabled,.btn-outline-anagrama:disabled{color:#ff8b07;background-color:transparent}
+.btn-outline-anagrama:not(:disabled):not(.disabled).active,
+.btn-outline-anagrama:not(:disabled):not(.disabled):active,
+.show>.btn-outline-anagrama
+.dropdown-toggle{color:#212529;background-color:#ff8b07;border-color:#ff8b07}
+.btn-outline-anagrama:not(:disabled):not(.disabled).active:focus,.btn-outline-anagrama:not(:disabled):not(.disabled):active:focus,
+.show>.btn-outline-anagrama.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(255,193,7,.5)}

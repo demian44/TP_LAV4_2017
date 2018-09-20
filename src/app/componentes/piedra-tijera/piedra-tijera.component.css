@@ -1,0 +1,7 @@
+.ppt{
+    width:100%;
+    border-radius: 35px;
+    -webkit-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+    box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+}

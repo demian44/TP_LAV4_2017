@@ -1,0 +1,16 @@
+<div style="background-color:rgb(70, 69, 78);margin:0;height:100%;width: 100%;">
+  Lateral panel:
+    <div class="raw align-middle">
+    <div class="col-12" style="width:100%">
+      <app-timer [time]='time' [gameFinished]='gameFinished' (timeEvent)='timeOver()'></app-timer>
+    </div>
+  </div>
+  <div class="raw" style="width:100%">
+    <div class="col-12">
+      <button (click)='prueba();'>
+        prueba
+      </button>
+      <app-point-meter></app-point-meter>
+    </div>
+  </div>
+</div>
