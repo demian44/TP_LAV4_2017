@@ -10,15 +10,15 @@ export class LateralPanelComponent implements OnInit {
   gameFinished: boolean;
   messegeTime: string;
   constructor() { }
-  @Output() timeOut: EventEmitter<string> = new EventEmitter<string>();
+  @Output() timeOut: EventEmitter<boolean> = new EventEmitter<boolean>();
   ngOnInit() {
     this.messegeTime = "Se acabó el tiempo";
-    this.time = 1000;
+    this.time = 200;
     this.gameFinished = false;
   }
 
-  timeOver() {
-    this.timeOut.emit("Se termino el tiempo");
+  timeOver(timeOver) {
+    this.timeOut.emit(timeOver);
   }
   prueba() {
     console.log("ENTRO");

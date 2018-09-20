@@ -4,8 +4,8 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" data-backdrop="false" role="dialog" 
-aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div   class="modal fade" [ngClass]='showPopUp'  [ngStyle]="{'display': 'block'}" id="exampleModal" tabindex="-1" data-backdrop="false" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -15,10 +15,11 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
         </button>
       </div>
       <div class="modal-body">
-        {{messege}}
+        ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">OK!</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

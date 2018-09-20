@@ -12,7 +12,7 @@ export class TimerComponent implements OnInit {
   @Input() time: number;
   @Input() gameFinished: boolean;
 
-  @Output() timeEvent: EventEmitter<number> = new EventEmitter<number>();
+  @Output() timeEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   /// @Output() contador:EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit() {
@@ -26,6 +26,7 @@ export class TimerComponent implements OnInit {
         this.time--;
       else if (this.time == 0) {
         console.log(this.gameFinished);
+        this.timeEvent.emit(true);
         this.time--;
       }
     }, 10)

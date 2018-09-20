@@ -19,6 +19,7 @@ export const COLUMNS: number = 7;
 })
 export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
   /*****************  Atributos  *****************/
+  showPopUp:boolean = false;
   private _won: boolean;
   public get won(): boolean {
     return this._won;
@@ -186,8 +187,11 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     console.log(this._ships);
   }
 
-  timeOut(messege:string){
-    this.eventPopUp.emit(messege);
+  timeOut(timeOut):void{
+    if(timeOut){
+      console.log("timeOut "+timeOut);
+      this.showPopUp = true;
+    }
   }
   /***************** End Methods  *****************/
 }
