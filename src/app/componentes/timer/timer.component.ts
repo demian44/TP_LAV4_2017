@@ -12,6 +12,7 @@ export class TimerComponent implements OnInit {
   @Input() time: number;
   @Input() gameFinished: boolean;
 
+
   @Output() timeEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   /// @Output() contador:EventEmitter<number> = new EventEmitter<number>();
 

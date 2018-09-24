@@ -2,9 +2,13 @@
 
 .imagenPrincipal {
     background-image: url("./assets/imagenes/Mario_Principal.jpg");
+    opacity: 0.95;
+    background-color: rgb(134, 60, 0);
     position: fixed;
-    width: 100%;
-    height: 100%;
+    z-index: -2;
+    left: -5px;
+    width: 104%;
+    height: 400%;
 }
 
 .anagramsWord{
@@ -17,9 +21,15 @@
 }
 
  
-.myShadow{
+.generalShadow{
     
     -webkit-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
     -moz-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 19.15) !important;
+}
+.headerShadow{
+    
+    -webkit-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.5);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.30) !important;
 }

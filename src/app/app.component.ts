@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { LoginComponent } from './componentes/login/login.component';
+import { IncrementService } from './clases/IncrementService';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +8,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  private userEmail: string = "usuario";
+  private appLoged: boolean = true;
+  eventPopUp() {
 
-  eventPopUp(){
-    
   }
+
+  constructor() {
+
+  }
+  ngOnInit() {
+  }
+  
+
+  public checkLog() {
+    alert("EL EVENTO");
+    return true;
+  }
+
+
 }

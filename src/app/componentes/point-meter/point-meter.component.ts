@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./point-meter.component.css']
 })
 export class PointMeterComponent implements OnInit {
-
+  points: number;
   constructor() { }
 
   ngOnInit() {
+    this.points = 0;
   }
 
 }

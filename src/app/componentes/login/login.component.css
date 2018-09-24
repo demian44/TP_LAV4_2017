@@ -15,17 +15,15 @@ input[type=text], input[type=password] {
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
+    background-color:rgb(24, 33, 44);
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
     cursor: pointer;
     width: 100%;
 }
 
 button:hover {
-    opacity: 0.8;
+    opacity: 0.95;
 }
 
 .cancelbtn {
@@ -66,4 +64,8 @@ span.psw {
     .cancelbtn {
        width: 100%;
     }
+}
+
+.login{
+    box-shadow: 10px 13px 50px -15px rgba(0, 0, 0, 0.904);
 }

@@ -33,3 +33,11 @@ cursor: pointer;
 background-color: #555;
 color: white;
 }
+
+.tatetiValue{
+    color: #FFF;
+    text-align: center;
+    font:  100px arial, Serif;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    content: 'O';
+}

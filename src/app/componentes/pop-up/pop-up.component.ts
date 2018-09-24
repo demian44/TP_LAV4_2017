@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import * as $ from 'jquery';
 
 
@@ -7,16 +7,29 @@ import * as $ from 'jquery';
   templateUrl: './pop-up.component.html',
   styleUrls: ['./pop-up.component.css']
 })
-export class PopUpComponent implements OnInit,OnChanges {
+export class PopUpComponent implements OnInit, OnChanges {
+  stilePopUp: string;
+  messegeHeader:string;
+  @Input() showPopUp: boolean = true;
+  @Input() success: boolean;
+  @Input() messege: boolean;
 
-  @Input() showPopUp:boolean = true;
   constructor() { }
 
   ngOnInit() {
     console.log(this.showPopUp);
+    this.stilePopUp = "modal fade";
   }
-  ngOnChanges(){
+  ngOnChanges() {
     console.log(this.showPopUp);
+    if (this.showPopUp) {
+      this.stilePopUp = "modal fade show block";
+    }
+    if (!this.success)
+      this.messegeHeader = "Jodete hermano";
+  }
+  close() {
+    this.stilePopUp = "modal fade";
   }
 
 }

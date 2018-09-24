@@ -12,11 +12,12 @@ import { HttpModule } from '@angular/http';
 // agrego las clases para utilizar ruteo
 import { RouterModule, Routes } from '@angular/router';
 
-import { MiHttpService } from './servicios/mi-http/mi-http.service'; 
-import { PaisesService } from './servicios/paises.service'; 
+import { MiHttpService } from './servicios/mi-http/mi-http.service';
+import { PaisesService } from './servicios/paises.service';
+import { UserService } from './servicios/user.service';
 
-import { JugadoresService } from './servicios/jugadores.service'; 
-import{ ArchivosJugadoresService} from './servicios/archivos-jugadores.service'; 
+import { JugadoresService } from './servicios/jugadores.service';
+import { ArchivosJugadoresService } from './servicios/archivos-jugadores.service';
 import { ErrorComponent } from './componentes/error/error.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/agilidad-aritmetica.component';
@@ -62,6 +63,7 @@ import { LateralPanelComponent } from './componentes/lateral-panel/lateral-panel
 import { TimerComponent } from './componentes/timer/timer.component';
 import { PointMeterComponent } from './componentes/point-meter/point-meter.component';
 import { PopUpComponent } from './componentes/pop-up/pop-up.component';
+import { IncrementService } from './clases/IncrementService';
 
 
 @NgModule({
@@ -111,7 +113,8 @@ import { PopUpComponent } from './componentes/pop-up/pop-up.component';
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)
   ],
-  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
+  providers: [JuegoServiceService, MiHttpService, PaisesService, UserService,
+     ArchivosJugadoresService, JugadoresService,CabeceraComponent,IncrementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

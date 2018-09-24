@@ -19,7 +19,9 @@ export const COLUMNS: number = 7;
 })
 export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
   /*****************  Atributos  *****************/
-  showPopUp:boolean = false;
+  showPopUp: boolean = false;
+  success: boolean = false;
+  messege: string;
   private _won: boolean;
   public get won(): boolean {
     return this._won;
@@ -43,7 +45,7 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     return this._ships;
   }
   private _rowsName: string[];
-  private messege: string;
+
   /*****************  End Atributos  *****************/
 
   constructor() {
@@ -60,7 +62,7 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
       new Row(this._rowsName[5], COLUMNS)
     ];
   }
-  @Output() eventPopUp:EventEmitter<string> = new EventEmitter<string>();
+  @Output() eventPopUp: EventEmitter<string> = new EventEmitter<string>();
   ngOnInit(): void {
     this.messege = "GANASTE";
     this.putShips();
@@ -117,7 +119,8 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
   public checkIfWin() {
     if (!this._won && this._sunkenShips == this.ships.length) {
       this._won = true;
-      alert("YOU WIN");
+      this.messege = "Ganaste!!";
+      this.showPopUp = true;
     }
   }
 
@@ -152,7 +155,6 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
   }
 
   private putShips(): void {
-
     let sense: number = Math.floor(Math.random() * 2);
     let rowIndex: number = Math.floor(Math.random() * 4);
     let shipThree: Ship;
@@ -181,15 +183,14 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     } while (shipFour.isTouched(shipOne) || shipThree.isTouched(shipOne)
       || shipTwo.isTouched(shipOne));
 
-
-
     this._ships.push(shipFour, shipThree, shipTwo, shipOne);
     console.log(this._ships);
   }
 
-  timeOut(timeOut):void{
-    if(timeOut){
-      console.log("timeOut "+timeOut);
+  timeOut(timeOut): void {
+    if (timeOut) {
+      console.log("timeOut " + timeOut);
+      this.messege = "Se acabó el tiempo";
       this.showPopUp = true;
     }
   }
