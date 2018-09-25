@@ -31,13 +31,13 @@ export class LoginComponent implements OnInit, OnChanges {
   progresoMensaje = "esperando...";
   logeando = true;
   ProgresoDeAncho: string;
-  user: User;
   clase = "progress-bar progress-bar-info progress-bar-striped ";
 
 
   constructor(private incrementService: IncrementService,
     private userService: UserService,
     private route: ActivatedRoute,
+    private user: User,
     private router: Router) {
     this.progreso = 0;
     this.ProgresoDeAncho = "0%";
@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit, OnChanges {
   @Output() logedEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   ngOnInit() {
+    alert(localStorage.getItem("loged"));
     if (localStorage.getItem("loged") == "true") {
       this.router.navigate(['/Principal']);
       LoginComponent._loged = true;
@@ -65,8 +66,10 @@ export class LoginComponent implements OnInit, OnChanges {
             console.log();
             console.log("no rompio todavia");
             console.log();
-            console.log(succes["_body"]);
             let bodyResponse = JSON.parse(succes["_body"]);
+            console.log(bodyResponse);
+            this.savePoints(bodyResponse);
+
             if (bodyResponse.code == 0) {
               console.log(bodyResponse.response);//Guardo el token
               UserService.token = bodyResponse.response;//Guardo el token
@@ -99,6 +102,22 @@ export class LoginComponent implements OnInit, OnChanges {
 
   public static get isLoged(): boolean {
     return LoginComponent._loged;
+  }
+
+  private savePoints(bodyResponse: any) {
+    this.user.agilidad = bodyResponse.response.points.agilidad;
+    this.user.anagrama = bodyResponse.response.points.anagrama;
+    this.user.naval = bodyResponse.response.points.naval;
+    this.user.numero = bodyResponse.response.points.numero;
+    this.user.piedra = bodyResponse.response.points.piedra;
+    this.user.tateti = bodyResponse.response.points.tateti;
+
+    localStorage.setItem("agilidad", bodyResponse.response.points.agilidad);
+    localStorage.setItem("anagrama", bodyResponse.response.points.anagrama);
+    localStorage.setItem("naval", bodyResponse.response.points.naval);
+    localStorage.setItem("numero", bodyResponse.response.points.numero);
+    localStorage.setItem("piedra", bodyResponse.response.points.piedra);
+    localStorage.setItem("tateti", bodyResponse.response.points.tateti);
   }
 
 

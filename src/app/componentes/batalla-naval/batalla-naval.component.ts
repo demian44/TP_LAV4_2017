@@ -3,13 +3,16 @@ import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Ship, UNDID, VERTICAL, HORIZONTAL, NOSHOT } from './models/ship';
-import { ShipPart, SHOOTED, SAFE } from './models/ship-part';
+import { ShipPart, SHOOTED, SAFE, WATER } from './models/ship-part';
+
 import { Row } from './models/row';
 import { AppComponent } from './../../app.component';
 import { IBatallaNavalComponent } from './interfaces/ibatalla-naval-component';
+import { User } from '../../clases/user';
+import { UserService } from '../../servicios/user.service';
 
 
-export const WATER: string = " X ";
+
 export const COLUMNS: number = 7;
 
 @Component({
@@ -22,36 +25,37 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
   showPopUp: boolean = false;
   success: boolean = false;
   messege: string;
-  private _won: boolean;
-  public get won(): boolean {
-    return this._won;
-  }
+  time: number = 30;
+  points: number;
+
   private _counter: number;
+  private _point: number;
+  private _rows: Row[];
+  private _sunkenShips: number;
+  private _ships: Ship[];
+  private _rowsName: string[];
+
+
   public get counter(): number {
     return this._counter;
   }
-
-  private _point: number;
-  private _rows: Row[];
   public get rows(): Row[] {
     return this._rows;
   }
-  private _sunkenShips: number;
   public get sunkenShips(): number {
     return this._sunkenShips;
   }
-  private _ships: Ship[];
   public get ships(): Ship[] {
     return this._ships;
   }
-  private _rowsName: string[];
+
 
   /*****************  End Atributos  *****************/
 
-  constructor() {
+  constructor(private user: User, private userService: UserService) {
     this._ships = [];
     this._sunkenShips = 0;
-    this._won = false;
+    this.user.won = false;
     this._rowsName = ["a", "b", "c", "d", "e", "f"]
     this._rows = [
       new Row(this._rowsName[0], COLUMNS),
@@ -66,8 +70,12 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
   ngOnInit(): void {
     this.messege = "GANASTE";
     this.putShips();
+    this.user.won = false;
     this._counter = 15;
-    this._point = 300;
+    this.user.pointsActualGame = 0;
+    this.user.actualGame = "naval";
+    this.user.naval = Number(localStorage.getItem("naval"));
+    console.log(this.user.pointsActualGame)
   }
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
@@ -81,17 +89,16 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
    * @param column 
    */
   Misilazo(selectedRow: Row, column: number): void {
-    if (!this._won && selectedRow.columns[column] == NOSHOT) {
+    if (!this.user.won && !this.user.lose && selectedRow.columns[column] == NOSHOT) {
       console.log("Entro");
       let flagShooted: boolean = false;
       let newState: string = WATER;
       let i: number;
-
+      let point = -3;
       for (i = 0; i < this._ships.length; i++) {
         if (this._ships[i].shooted(selectedRow.name, column)) {
-          this._point += 15;
           newState = SHOOTED;
-
+          point = 10;
           if (this._ships[i].state == UNDID) {
             this._sunkenShips++;
             newState = UNDID;
@@ -99,12 +106,10 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
           }
           break;
         }
-        else {
-          this._point -= 10;
-        }
+
       }
       if (this._ships.length == i) this._counter--;
-
+      this.user.pointsActualGame += point;
       this._rows.forEach(row => {
         if (row.name == selectedRow.name)
           row.columns[column] = newState;// La columna empieza de cero, pero para el usuario es 1
@@ -117,10 +122,13 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
    * Verifica si todos los barcos están undidos.
    */
   public checkIfWin() {
-    if (!this._won && this._sunkenShips == this.ships.length) {
-      this._won = true;
+    if (!this.user.won && this._sunkenShips == this.ships.length) {
+      this.user.won = true;
       this.messege = "Ganaste!!";
       this.showPopUp = true;
+      this.user.email = localStorage.getItem("email");
+     
+
     }
   }
 
@@ -153,10 +161,21 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
       }
     }
   }
+  
+  sendData(){
+    this.user.naval += this.user.pointsActualGame;
+    this.user.pointsActualGame = this.user.naval;
+    this.user.actualGame = "naval";
+    this.user.email = localStorage.getItem("email");
+    localStorage.setItem("naval", this.user.naval.toString());
+    this.userService.sendResults(this.user);
+    console.log("actual",this.user.pointsActualGame);
+  }
+
 
   private putShips(): void {
     let sense: number = Math.floor(Math.random() * 2);
-    let rowIndex: number = Math.floor(Math.random() * 4);
+    let rowIndex: number = Math.floor(Math.random() * 3);
     let shipThree: Ship;
     let shipTwo: Ship;
     let shipOne: Ship;
@@ -165,25 +184,24 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
 
     do {
       sense = Math.floor(Math.random() * 2);
-      rowIndex = Math.floor(Math.random() * 5);
+      rowIndex = Math.floor(Math.random() * 4);
       shipThree = new Ship(3, this._rowsName[rowIndex], Math.floor(Math.random() * 4), sense);
-
     } while (shipFour.isTouched(shipThree));
 
     do {
       sense = Math.floor(Math.random() * 2);
-      rowIndex = Math.floor(Math.random() * 6);
+      rowIndex = Math.floor(Math.random() * 5);
       shipTwo = new Ship(2, this._rowsName[rowIndex], Math.floor(Math.random() * 5), sense);
     } while (shipFour.isTouched(shipTwo) || shipThree.isTouched(shipTwo));
 
     do {
       sense = Math.floor(Math.random() * 2);
-      rowIndex = Math.floor(Math.random() * 6);
+      rowIndex = Math.floor(Math.random() * 5);
       shipOne = new Ship(1, this._rowsName[rowIndex], Math.floor(Math.random() * 6), sense);
     } while (shipFour.isTouched(shipOne) || shipThree.isTouched(shipOne)
       || shipTwo.isTouched(shipOne));
 
-    this._ships.push(shipFour, shipThree, shipTwo, shipOne);
+    this._ships.push(shipFour);//, shipThree, shipTwo, shipOne);
     console.log(this._ships);
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Word } from './word';
+import { User } from '../../clases/user';
+import { UserService } from '../../servicios/user.service';
 const WORDSLENGHT: number = 5;
 @Component({
   selector: 'app-anagrama',
@@ -11,13 +13,26 @@ export class AnagramaComponent implements OnInit {
     "arroz", "lapiz", "manzana", "lombriz", "violeta", "rojo", "amarillo", "marte",
     "azul", "reparar", "animal", "perro", "macri", "gato", "zapato", "europa",];
   words: Word[];
+  succedWorks: number;
   word: string;
   buttonSuccesClass: string[];
   anagramsWord: string[];
   userWords: string[];
+  time: number;
+  showPopUp: boolean = false;
+  success: boolean = false;
+  messege: string;
 
-  constructor() { }
+  constructor(private user: User, private userService: UserService) { }
   ngOnInit() {
+    this.user.won = false;
+    this.user.pointsActualGame = 0;
+    this.user.won = false;
+    this.user.anagrama = Number(localStorage.getItem("anagrama"));
+    this.succedWorks = 0;
+    this.messege = "Ganaste!!";
+    this.showPopUp = true;
+    this.time = 60;
     this.buttonSuccesClass = [];
     for (let i = 0; i < WORDSLENGHT; i++) this.buttonSuccesClass.push("btn btn-outline-anagrama pull-right");
     this.userWords = [];
@@ -41,9 +56,36 @@ export class AnagramaComponent implements OnInit {
   }
 
   checkWord(index: number) {
+
     if (this.words[index].check(this.userWords[index])) {
-      alert("BIEN PAPI");
+      this.user.pointsActualGame += 30;
+      this.succedWorks++;
       this.buttonSuccesClass[index] = "btn btn-outline-success pull-right";
+      if (this.succedWorks == this.words.length) {
+        this.messege = "Sos un mostroooo!!!";
+        this.user.won = true;
+        this.showPopUp = true;
+      }
+    }
+    else {
+      this.user.pointsActualGame -= 10;
+    }
+  }
+
+  sendData(){
+    this.user.anagrama += this.user.pointsActualGame;
+    this.user.pointsActualGame = this.user.anagrama;
+    this.user.actualGame = "anagrama";
+    this.user.email = localStorage.getItem("email");
+    localStorage.setItem("anagrama", this.user.anagrama.toString());
+    this.userService.sendResults(this.user);
+  }
+
+  timeOut(timeOut): void {
+    if (timeOut) {
+      console.log("timeOut " + timeOut);
+      this.messege = "Se acabó el tiempo";
+      this.showPopUp = true;
     }
   }
 }

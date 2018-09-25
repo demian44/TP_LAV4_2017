@@ -1,5 +1,6 @@
 export const SAFE: string = "safe";
 export const SHOOTED: string = "shooted";
+export const WATER: string = "water";
 
 export class ShipPart {
     /*****************  Atributos  *****************/

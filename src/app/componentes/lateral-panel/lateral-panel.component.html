@@ -1,8 +1,7 @@
-<div class="generalShadow" style=
-"background-image:url('./assets/imagenes/gris.jpg');margin:-70px 0 0 0;height:120%;width: 100%;padding:75px 20px 20px 20px " >
+<div class="generalShadow lateral-panel" style="margin:0 2% 0 2%;width:96%">
   <div class="raw align-middle">
-    <div class="col-12" style="width:100%;">
-      <app-timer [time]='time' [gameFinished]='gameFinished' (timeEvent)='timeOver($event)'></app-timer>
+    <div class="col-12" style="width:100%">
+      <app-timer [time]='time' [gameFinished]='gameFinished' (pointCalculed)='timePointCalculed()' (timeEvent)='timeOver($event)'></app-timer>
     </div>
   </div>
   <div class="raw" style="width:100%">

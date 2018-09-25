@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lateral-panel',
@@ -6,14 +6,15 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
   styleUrls: ['./lateral-panel.component.css']
 })
 export class LateralPanelComponent implements OnInit {
-  time: number;
+  @Input() time: number;
   gameFinished: boolean;
   messegeTime: string;
   constructor() { }
   @Output() timeOut: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() pointCalculed: EventEmitter<boolean> = new EventEmitter<boolean>();
   ngOnInit() {
     this.messegeTime = "Se acabó el tiempo";
-    this.time = 200;
+    this.time = this.time * 100; //Multiplico por milisegundos.
     this.gameFinished = false;
   }
 
@@ -23,6 +24,10 @@ export class LateralPanelComponent implements OnInit {
   prueba() {
     console.log("ENTRO");
     this.messegeTime = "PRUEBA";
+  }
+
+  timePointCalculed() {
+    this.pointCalculed.emit();
   }
 
 }

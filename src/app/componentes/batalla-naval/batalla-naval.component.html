@@ -1,28 +1,28 @@
 <app-pop-up [showPopUp]='showPopUp' [messege]='messege' [success]='success'></app-pop-up>
 <div class="row" style="height:100%;margin-top:60px">
   <div class="col-3">
-    <app-lateral-panel (timeOut)='timeOut($event)'></app-lateral-panel>
+    <app-lateral-panel (timeOut)='timeOut($event)' (pointCalculed)='sendData()' [(time)]='time'></app-lateral-panel>
     <!-- <app-counter [counter]="counter"></app-counter> -->
   </div>
-  <div class="col-6">
-    <table class="table-bordered" style="margin-left:5%;color:white">
-      <tbody>
+  <div class="col-6" style="border-radius: 25px">
+    <table class="table-bordered" style="margin-left:5%;color:white;">
+      <tbody style=" background-image:url('../../../assets/imagenes/radar.jpg');padding: 0 0 25px 25px">
         <tr *ngFor="let row of rows">
-          <td style="width:30px">
+          <td style="width:30px"> 
             {{row.name}}
           </td>
-          <td (click)="Misilazo(row,0)" style="width:60px; height:60px;text-align: center">
-            {{row.columns[0]}}</td>
-          <td (click)="Misilazo(row,1)" style="width:60px; height:60px;text-align: center">
-            {{row.columns[1]}}</td>
-          <td (click)="Misilazo(row,2)" style="width:60px; height:60px;text-align: center">
-            {{row.columns[2]}}</td>
-          <td (click)="Misilazo(row,3)" style="width:60px; height:60px;text-align: center">
-            {{row.columns[3]}}</td>
-          <td (click)="Misilazo(row,4)" style="width:60px; height:60px;text-align: center">
-            {{row.columns[4]}}</td>
-          <td (click)="Misilazo(row,5)" style="width:60px; height:60px;text-align: center">
-            {{row.columns[5]}}</td>
+          <td (click)="Misilazo(row,0)" [ngClass]="row.columns[0]" style="width:60px; height:60px;text-align: center">
+            </td>
+          <td (click)="Misilazo(row,1)" [ngClass]="row.columns[1]" style="width:60px; height:60px;text-align: center">
+            </td>
+          <td (click)="Misilazo(row,2)" [ngClass]="row.columns[2]" style="width:60px; height:60px;text-align: center">
+            </td>
+          <td (click)="Misilazo(row,3)" [ngClass]="row.columns[3]" style="width:60px; height:60px;text-align: center">
+            </td>
+          <td (click)="Misilazo(row,4)" [ngClass]="row.columns[4]" style="width:60px; height:60px;text-align: center">
+            </td>
+          <td (click)="Misilazo(row,5)" [ngClass]="row.columns[5]" style="width:60px; height:60px;text-align: center">
+            </td>
         </tr>
         <tr>
           <td style="height:5px"> </td>

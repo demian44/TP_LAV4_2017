@@ -1,65 +1,74 @@
-<div class="row anagramaBox" style="Margin:3% 5% 0 5%;width: 90%;border-radius: 5px;">
-  <div class="col-2 anagramsWord">
-    <h4>{{anagramsWord[0]}}</h4>
-  </div>
+<app-pop-up [showPopUp]='showPopUp' [messege]='messege' [success]='success'></app-pop-up>
+<div class="row" style="height:400px;margin-top:60px">
   <div class="col-3">
-    <input [(ngModel)]="userWords[0]" [disabled]="words[0].succes" #ctrl="ngModel" required>
+    <app-lateral-panel (timeOut)='timeOut($event)' (pointCalculed)='sendData()' [(time)]='time'></app-lateral-panel>
+    <!-- <app-counter [counter]="counter"></app-counter> -->
   </div>
-  <div class="col-7">
-    <button [ngClass]='buttonSuccesClass[0]' [disabled]="words[0].succes"  (click)="checkWord(0)">
-      Probar suerte
-    </button>
-  </div>
-</div>
-<div class="row anagramaBox" style="Margin:3% 5% 0 5%;width: 90%;border-radius: 5px;">
-  <div class="col-2 anagramsWord">
-    <h4>{{anagramsWord[1]}}</h4>
-  </div>
-  <div class="col-3">
-    <input [(ngModel)]="userWords[1]" [disabled]="words[1].succes"  #ctrl="ngModel" required>
-  </div>
-  <div class="col-7">
-    <button [ngClass]='buttonSuccesClass[1]' [disabled]="words[1].succes" (click)="checkWord(1)">
-      Probar suerte
-    </button>
-  </div>
-</div>
-<div class="row anagramaBox" style="Margin:3% 5% 0 5%;width: 90%;border-radius: 5px;">
-  <div class="col-2 anagramsWord">
-    <h4>{{anagramsWord[2]}}</h4>
-  </div>
-  <div class="col-3">
-    <input [(ngModel)]="userWords[2]" [disabled]="words[2].succes" #ctrl="ngModel" required>
-  </div>
-  <div class="col-7">
-    <button [ngClass]='buttonSuccesClass[2]' [disabled]="words[2].succes"  (click)="checkWord(2)">
-      Probar suerte
-    </button>
-  </div>
-</div>
-<div class="row anagramaBox" style="Margin:3% 5% 0 5%;width: 90%;border-radius: 5px;">
-  <div class="col-2 anagramsWord">
-    <h4>{{anagramsWord[3]}}</h4>
-  </div>
-  <div class="col-3">
-    <input [(ngModel)]="userWords[3]" [disabled]="words[3].succes" #ctrl="ngModel" required>
-  </div>
-  <div class="col-7">
-    <button [ngClass]='buttonSuccesClass[3]' [disabled]="words[3].succes" (click)="checkWord(3)">
-      Probar suerte
-    </button>
-  </div>
-</div>
-<div class="row anagramaBox" style="Margin:3% 5% 0 5%;width: 90%;border-radius: 5px;">
-  <div class="col-2 anagramsWord">
-    <h4>{{anagramsWord[4]}}</h4>
-  </div>
-  <div class="col-3">
-    <input [(ngModel)]="userWords[4]" [disabled]="words[4].succes" #ctrl="ngModel" required>
-  </div>
-  <div class="col-7">
-    <button [ngClass]='buttonSuccesClass[4]' [disabled]="words[4].succes"  (click)="checkWord(4)">
-      Probar suerte
-    </button>
+  <div class="col-9" style="border-radius: 25px">
+    <div class="row gameBox" style="Margin:-1% 5% 0 1%;width: 90%;border-radius: 5px;">
+      <div class="col-2 anagramsWord">
+        <h4>{{anagramsWord[0]}}</h4>
+      </div>
+      <div class="col-3">
+        <input [(ngModel)]="userWords[0]" [disabled]="words[0].succes" #ctrl="ngModel" required>
+      </div>
+      <div class="col-7">
+        <button [ngClass]='buttonSuccesClass[0]' [disabled]="words[0].succes" (click)="checkWord(0)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
+    <div class="row gameBox" style="Margin:3% 5% 0 1%;width: 90%;border-radius: 5px;">
+      <div class="col-2 anagramsWord">
+        <h4>{{anagramsWord[1]}}</h4>
+      </div>
+      <div class="col-3">
+        <input [(ngModel)]="userWords[1]" [disabled]="words[1].succes" #ctrl="ngModel" required>
+      </div>
+      <div class="col-7">
+        <button [ngClass]='buttonSuccesClass[1]' [disabled]="words[1].succes" (click)="checkWord(1)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
+    <div class="row gameBox" style="Margin:3% 5% 0 1%;width: 90%;border-radius: 5px;">
+      <div class="col-2 anagramsWord">
+        <h4>{{anagramsWord[2]}}</h4>
+      </div>
+      <div class="col-3">
+        <input [(ngModel)]="userWords[2]" [disabled]="words[2].succes" #ctrl="ngModel" required>
+      </div>
+      <div class="col-7">
+        <button [ngClass]='buttonSuccesClass[2]' [disabled]="words[2].succes" (click)="checkWord(2)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
+    <div class="row gameBox" style="Margin:3% 5% 0 1%;width: 90%;border-radius: 5px;">
+      <div class="col-2 anagramsWord">
+        <h4>{{anagramsWord[3]}}</h4>
+      </div>
+      <div class="col-3">
+        <input [(ngModel)]="userWords[3]" [disabled]="words[3].succes" #ctrl="ngModel" required>
+      </div>
+      <div class="col-7">
+        <button [ngClass]='buttonSuccesClass[3]' [disabled]="words[3].succes" (click)="checkWord(3)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
+    <div class="row gameBox" style="Margin:3% 5% 0 1%;width: 90%;border-radius: 5px;">
+      <div class="col-2 anagramsWord">
+        <h4>{{anagramsWord[4]}}</h4>
+      </div>
+      <div class="col-3">
+        <input [(ngModel)]="userWords[4]" [disabled]="words[4].succes" #ctrl="ngModel" required>
+      </div>
+      <div class="col-7">
+        <button [ngClass]='buttonSuccesClass[4]' [disabled]="words[4].succes" (click)="checkWord(4)">
+          Probar suerte
+        </button>
+      </div>
+    </div>
   </div>
 </div>

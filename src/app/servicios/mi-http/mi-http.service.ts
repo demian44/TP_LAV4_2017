@@ -21,8 +21,6 @@ export class MiHttpService {
       .then((this.extractData))
       .catch(this.handleError);
 
-    //console.log(pepe);
-    // console.log("-", url, "-");
     return this.http
       .get(url)
       .toPromise()

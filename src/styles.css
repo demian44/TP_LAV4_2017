@@ -10,7 +10,15 @@
     width: 104%;
     height: 400%;
 }
-
+.gameBox{
+    width: 400px;
+    padding: 15px;
+    font-family: 'Roboto',sans-serif;
+    box-shadow: 10px 13px 50px -15px rgba(0, 0, 0, 0.904);
+    margin:25px;
+    background:rgba(199, 193, 255, 0.1);
+    color:black;
+}
 .anagramsWord{
     /* color:rgb(224, 224, 224); */
     color: #FFF;

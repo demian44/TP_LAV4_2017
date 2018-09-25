@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../../clases/user';
 
 @Component({
   selector: 'app-point-meter',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./point-meter.component.css']
 })
 export class PointMeterComponent implements OnInit {
-  points: number;
-  constructor() { }
+
+  constructor(private user: User) { }
 
   ngOnInit() {
-    this.points = 0;
+    this.user.pointsActualGame;
   }
 
 }

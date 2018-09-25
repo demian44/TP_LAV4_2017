@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { User } from '../../clases/user';
 
 @Component({
   selector: 'app-timer',
@@ -6,14 +7,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
-
-  constructor() { }
+  counterFlag: boolean = true;
+  pointFlag: boolean = true;
+  constructor(private user: User) { }
 
   @Input() time: number;
   @Input() gameFinished: boolean;
 
 
   @Output() timeEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() pointCalculed: EventEmitter<boolean> = new EventEmitter<boolean>();
   /// @Output() contador:EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit() {
@@ -23,13 +26,22 @@ export class TimerComponent implements OnInit {
   runTime(time: number) {
     this.time = time;
     setInterval(() => {
-      if (this.time > 0)
-        this.time--;
-      else if (this.time == 0) {
-        console.log(this.gameFinished);
-        this.timeEvent.emit(true);
-        this.time--;
+      if (!this.user.won) {
+        if (this.time > 0)
+          this.time--;
+        else if (this.counterFlag && this.time == 0) {
+          console.log(this.gameFinished);
+          this.timeEvent.emit(true);
+          this.counterFlag = false;
+          this.user.lose = true;
+        }
       }
-    }, 10)
+      else if(this.pointFlag) {
+        this.pointFlag = false;
+        this.user.pointsActualGame += (this.time / 50);
+        this.time = 0;
+        this.pointCalculed.emit();
+      }
+    }, 10);
   }
 }

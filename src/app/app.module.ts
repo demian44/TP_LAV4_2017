@@ -64,6 +64,7 @@ import { TimerComponent } from './componentes/timer/timer.component';
 import { PointMeterComponent } from './componentes/point-meter/point-meter.component';
 import { PopUpComponent } from './componentes/pop-up/pop-up.component';
 import { IncrementService } from './clases/IncrementService';
+import { User } from './clases/user';
 
 
 @NgModule({
@@ -114,7 +115,7 @@ import { IncrementService } from './clases/IncrementService';
     // RouterModule.forRoot(MiRuteo)
   ],
   providers: [JuegoServiceService, MiHttpService, PaisesService, UserService,
-     ArchivosJugadoresService, JugadoresService,CabeceraComponent,IncrementService],
+     ArchivosJugadoresService, JugadoresService,CabeceraComponent,IncrementService,User],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

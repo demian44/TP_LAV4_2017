@@ -5,8 +5,7 @@ export const VERTICAL: number = 0;
 export const HORIZONTAL: number = 1;
 export const UNDID: string = "undid";
 export const FLOATING: string = "flotando";
-export const NOSHOT: string = " ";
-
+export const NOSHOT: string = "noShooted";
 export class Ship implements IShip {
 
     /*****************  Atributos  *****************/
@@ -47,25 +46,25 @@ export class Ship implements IShip {
     constructor(long: number, row: string, column: number, sense: number) {
         this._parts = [];
         this.sense = sense;
-        
+
         if (long > 0 && long <= CANTIDAD_COLUMNAS) {
             if (sense === HORIZONTAL)
-            for (let i = 0; i < long; i++) {
-                this._parts.push(new ShipPart(row, column + i));//Cada vez se desplaza uno en columnas.
-            }
+                for (let i = 0; i < long; i++) {
+                    this._parts.push(new ShipPart(row, column + i));//Cada vez se desplaza uno en columnas.
+                }
             else if (sense === VERTICAL)
-            for (let i = 0; i < long; i++) {
-                this._parts.push(new ShipPart(row, column));
-                row = ShipPart.nextRow(row);// Se mueve en sentido de las rows.
-            }
+                for (let i = 0; i < long; i++) {
+                    this._parts.push(new ShipPart(row, column));
+                    row = ShipPart.nextRow(row);// Se mueve en sentido de las rows.
+                }
             else
-            this._parts.push(new ShipPart(row, column)); // Instancio una nueva parte del barco con );   
-        }        
+                this._parts.push(new ShipPart(row, column)); // Instancio una nueva parte del barco con );   
+        }
         this._state = FLOATING;
         this._shootedParts = 0;
     }
     /***************** End Constructors  *****************/
-    
+
     /*****************  Methods  *****************/
     /**
      * Primero verifica si el barco está flotando, en ese caso chequea si fue herido.
@@ -99,22 +98,20 @@ export class Ship implements IShip {
      */
     isTouched(ship: Ship): boolean {
         let touched: boolean = false;
-        if (this.sense == ship.sense) {
-            if ((HORIZONTAL == this.sense && this._parts[0].rowName == ship.parts[0].rowName)
-                || (VERTICAL == this.sense && this._parts[0].column == ship.parts[0].column)) {
-                touched = true;
+
+        // if ((this._parts[0].rowName == ship.parts[0].rowName)
+        //     || (this._parts[0].column == ship.parts[0].column)) {
+        //     touched = true;
+        // }
+
+        for (let i = 0; i > this._parts.length; i++) {
+            for (let j = 0; j < ship.parts.length; j++) {
+                if (ship.parts[j].column == this._parts[i].column &&
+                    ship.parts[j].rowName == this._parts[i].rowName)
+                    touched = true;
             }
+            if (touched) break;
         }
-        else
-            for (let i = 0; i > this._parts.length; i++) {
-                for (let j = 0; j < ship.parts.length; j++) {
-                    if (ship.parts[j].column == this._parts[i].column &&
-                        ship.parts[j].rowName == this._parts[i].rowName)
-                        touched = true;
-                    break;
-                }
-                if (touched) break;
-            }
 
         return touched;
     }
