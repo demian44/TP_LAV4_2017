@@ -1,58 +1,57 @@
-<body>
-  <div class="jumbotron">
-    <h2 id="terminos">Terminos y condiciones</h2>
-    <p>El Gobierno de la República Argentina (en adelante el “Gobierno Nacional”) no es responsable por los daños y
-      perjuicios que puedan surgir, incluyendo, sin límite, daños, pérdidas o gastos directos, indirectos, que surjan
-      en relación con el uso de los Activos Digitales o la imposibilidad de uso, en relación con cualquier falla en el
-      vencimiento, error, omisión, interrupción, defecto, demora en la operación o transmisión, virus de computadora o
-      falla del sistema de línea, aún en el caso de que el Gobierno Nacional o sus representantes fueran informados
-      sobre la posibilidad de dichos daños, pérdidas o gastos.</p>
-    <p>El Gobierno Nacional no controla ni garantiza la ausencia de virus ni de otros elementos en los contenidos que
-      puedan producir alteraciones en su sistema informático (software y hardware) o en los documentos electrónicos y
-      ficheros almacenados en su sistema informático.</p>
-    <p>El Gobierno Nacional no puede garantizar que la transmisión de información por parte de los Usuarios sea
-      completamente segura. El Usuario asume este riesgo.</p>
+<div class="login" style="margin-top:80px;">
+  <div style="padding:20px;background-color: rgba(18, 17, 29, 0.911);border-radius:8px" class="">
+    <div class="form-group has-error has-feedback" style="color:orange;font-size:30px;font-family: Tahoma, Geneva, sans-serif;">
+      <label>Terminos y condiciones</label>
+    </div>
+    <p style="color:white">
+      Juro sobre el pergamino sagrado que si revelo alguno de los secretos de los Magios,
+      que se me hinche la barriga y se me caiga tooodoo el cabello. Asi sea.
+    </p>
+    <div class="btn-group" style="width:100%;margin-top:5%" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-warning" (click)="returnLogin()" style="width:100%">Mejor no</button>
+      <button type="button" class="btn btn-outline-warning" style="width:100%" onclick="document.getElementById('id01').style.display='block'">Mandale
+        cumbia</button>
+    </div>
 
-  </div>
-  <strong>
-    <p>No leer lo anterior, es solo un ejemplo sacado de https://www.argentina.gob.ar/terminos-y-condiciones </p>
-  </strong>
-  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Acepto</button>
-  <button class="cancelbtn" routerLink="/Principal" style="width:auto;">No acepto</button>
-  <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-    <form class="modal-content animate">
-      <div class="container">
+    <div id="id01" class="modal login" style="margin-top:80px;padding-bottom: 2%;height: 400px;margin-right:20px;margin-left:20px;z-index:999;border-radius:5px;padding: 0 15px 15px 45px;color:white;border-radius:8px">
+      <div class="row pull-right">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+      </div><br>
+      <div class="row">
         <label><b>Email</b></label>
-        <input type="text" placeholder="Ingresa tu correo" [(ngModel)]="user.email" name="email">
+
+        <input type="email" [ngClass]="inputEmail" (keydown)='emailHelp=""' placeholder="Ingresa tu correo" [(ngModel)]="user.email"
+          name="email" style="width:100%;margin-right:4%;border-radius:5px;border:0px;padding:5px 5px 6px 8px">
+        <small id="emailHelpId" class="form-text text-muted">{{emailHelp}}</small>
+      </div>
+      <div class="row">
         <label><b>Clave</b></label>
-        <input type="password" placeholder="Aca la clave" [(ngModel)]="user.password" name="psw">
-
+        <input type="password" (keydown)='claveHelp=""' placeholder="Aca la clave" [(ngModel)]="user.password" name="psw"
+          style="width:100%;margin-right:4%;border-radius:5px;border:0px;padding:5px 5px 6px 8px">
+          <small id="claveHelpId" class="form-text text-muted ">{{claveHelp}}</small>
+      </div>
+      <div class="row">
         <label><b>Repita la clave</b></label>
-        <input type="password" placeholder="Repetir clave" [(ngModel)]="user.passwordControl" name="repPsw">
-        <input type="checkbox" checked="checked">Recordar mis datos
-        <p>creando la cuenta aceptando los<a onclick="document.getElementById('id01').style.display='none'">Terminos y
-            condiciones</a>.</p>
+        <input type="password" placeholder="Repetir clave" [(ngModel)]="user.passwordControl" name="repPsw" style="width:100%;margin-right:4%;border-radius:5px;border:0px;padding:5px 5px 6px 8px">
+      </div>
+      <div class="row" style="width:100%">
+        <p>creando la cuenta aceptando los<a onclick="document.getElementById('id01').style.display='none'">Terminos
+            y condiciones</a>.</p>
+        <div class="btn-group" style="width:100%;margin:0 0 0 0" role="group" aria-label="Basic example">
 
-        <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me
-            arrepenti</button>
-          <button type="submit" class="signupbtn" (click)="saveUser()">Registrarme</button>
+          <button style="width:100%;height:55px;margin-top:2%" class="btn btn-outline-warning" (click)="returnLogin()">Mejor
+            no :v</button>
+          <button style="width:100%;height:55px;margin-top:2%" class="btn btn-outline-warning" (click)="saveUser()">Entrale</button>
         </div>
       </div>
-    </form>
+    </div>
   </div>
-
-  <script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
+</div>
+<script>
+  var modal = document.getElementById('id01');
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
     }
-  </script>
-
-</body>
+  }
+</script>

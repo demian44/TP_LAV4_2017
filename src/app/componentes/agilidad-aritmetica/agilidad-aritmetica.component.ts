@@ -14,6 +14,7 @@ import { UserService } from '../../servicios/user.service';
 export class AgilidadAritmeticaComponent implements OnInit {
   @Output()
   enviarJuego: EventEmitter<any> = new EventEmitter<any>();
+  title:string = "Agilidad Aritmética";
   juegosAgilidad: JuegoAgilidad[];
   classButton: string;
   ocultarVerificar: boolean;
@@ -28,7 +29,7 @@ export class AgilidadAritmeticaComponent implements OnInit {
   ngOnInit() {
     this.user.won = false;
     this.user.pointsActualGame = 0;
-    this.user.won = false;
+    this.user.lose = false;
     this.user.agilidad = 0;
     this.user.agilidad = Number(localStorage.getItem("agilidad"));
     this.messege = "Ganaste!!";

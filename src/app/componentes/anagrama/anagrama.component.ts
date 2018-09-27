@@ -27,7 +27,7 @@ export class AnagramaComponent implements OnInit {
   ngOnInit() {
     this.user.won = false;
     this.user.pointsActualGame = 0;
-    this.user.won = false;
+    this.user.lose = false;
     this.user.anagrama = Number(localStorage.getItem("anagrama"));
     this.succedWorks = 0;
     this.messege = "Ganaste!!";

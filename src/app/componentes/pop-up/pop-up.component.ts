@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import * as $ from 'jquery';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,12 +10,12 @@ import * as $ from 'jquery';
 })
 export class PopUpComponent implements OnInit, OnChanges {
   stilePopUp: string;
-  messegeHeader:string;
+  messegeHeader: string;
   @Input() showPopUp: boolean = true;
   @Input() success: boolean;
   @Input() messege: boolean;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     console.log(this.showPopUp);
@@ -28,8 +29,13 @@ export class PopUpComponent implements OnInit, OnChanges {
     if (!this.success)
       this.messegeHeader = "Jodete hermano";
   }
-  close() {
+  reload() {
     this.stilePopUp = "modal fade";
+    window.location.reload();
+  }
+  closeGoMenu() {
+    this.stilePopUp = "modal fade";
+    this.router.navigate(["/Principal"]);
   }
 
 }

@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit, OnChanges {
   logeando = true;
   ProgresoDeAncho: string;
   clase = "progress-bar progress-bar-info progress-bar-striped ";
-
-
+  emailHelp: string;
+  claveHelp: string;
   constructor(private incrementService: IncrementService,
     private userService: UserService,
     private route: ActivatedRoute,
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit, OnChanges {
   @Output() logedEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   ngOnInit() {
-    alert(localStorage.getItem("loged"));
+    // alert(localStorage.getItem("loged"));
     if (localStorage.getItem("loged") == "true") {
       this.router.navigate(['/Principal']);
       LoginComponent._loged = true;
@@ -57,9 +57,10 @@ export class LoginComponent implements OnInit, OnChanges {
   }
 
   public login() {
+    
     let responseApi: ResponseApi = new ResponseApi();
-    if (true) {//this.user.validateEmail() && this.user.validatePassword()) {
-
+    if (this.user.validateEmail() && this.user.validatePassword()) {
+      this.emailHelp = "";
       this.userService.login(this.user).subscribe(
         succes => {
           if (succes.status == 200) {
@@ -68,9 +69,9 @@ export class LoginComponent implements OnInit, OnChanges {
             console.log();
             let bodyResponse = JSON.parse(succes["_body"]);
             console.log(bodyResponse);
-            this.savePoints(bodyResponse);
 
             if (bodyResponse.code == 0) {
+              this.savePoints(bodyResponse);
               console.log(bodyResponse.response);//Guardo el token
               UserService.token = bodyResponse.response;//Guardo el token
               responseApi.code = 0;
@@ -86,7 +87,7 @@ export class LoginComponent implements OnInit, OnChanges {
               this.router.navigate(['/Principal']);
             }
             else if (bodyResponse.code == 4) {
-              alert("PassWord incorrecto");
+              this.emailHelp = ("Email o password incorrecto");
             }
           }
           else {
@@ -97,6 +98,11 @@ export class LoginComponent implements OnInit, OnChanges {
 
       );
 
+    } else {
+      if (!this.user.validateEmail())
+        this.emailHelp = "Ingrese un email válido."
+      if (!this.user.validatePassword())
+        this.claveHelp = "Clave con mas de 4 caracteres"
     }
   }
 
@@ -118,6 +124,10 @@ export class LoginComponent implements OnInit, OnChanges {
     localStorage.setItem("numero", bodyResponse.response.points.numero);
     localStorage.setItem("piedra", bodyResponse.response.points.piedra);
     localStorage.setItem("tateti", bodyResponse.response.points.tateti);
+  }
+
+  register() {
+    this.router.navigate(["/Registro"]);
   }
 
 

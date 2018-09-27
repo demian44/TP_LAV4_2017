@@ -10,12 +10,12 @@ export class User {
     private _actualGame: string;
     private _won: boolean;
     private _lose: boolean
-    private _naval:number;
-    private _tateti:number;
-    private _agilidad:number;
-    private _piedra:number;
-    private _numero:number;
-    private _anagrama:number;
+    private _naval: number;
+    private _tateti: number;
+    private _agilidad: number;
+    private _piedra: number;
+    private _numero: number;
+    private _anagrama: number;
 
     public get email(): string {
         return this._email;
@@ -117,6 +117,12 @@ export class User {
 
     validatePassword(): boolean {
         let succesReturn: boolean = false;
+        if (this.password.length > 3)
+            succesReturn = true;
+        return succesReturn;
+    }
+    validatePasswordWithConfirm(): boolean {
+        let succesReturn: boolean = false;
         if (this.password.length > 3 && this.password === this.passwordControl)
             succesReturn = true;
         return succesReturn;
@@ -126,6 +132,11 @@ export class User {
             this._points[pointsKey[i]] = pointsValue[i];
         }
         return true;
+    }
+
+    public constructor() {
+        this.email = "";
+        this.password = "";
     }
 
 

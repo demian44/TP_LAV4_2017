@@ -22,7 +22,7 @@ export class AppComponent {
   
 
   public checkLog() {
-    alert("EL EVENTO");
+    //alert("EL EVENTO");
     return true;
   }
 

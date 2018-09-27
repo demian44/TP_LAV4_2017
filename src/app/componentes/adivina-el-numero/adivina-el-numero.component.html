@@ -1,7 +1,7 @@
-<app-pop-up [(showPopUp)]='showPopUp' [(messege)]='messege' [(success)]='success'></app-pop-up>
+<app-pop-up [(showPopUp)]='showPopUp' [(messege)]='messege'  [(success)]='success'></app-pop-up>
 <div class="row" style="height:400px;margin-top:60px">
   <div class="col-sm-12 col-md-4 col-lg-3">
-    <app-lateral-panel (timeOut)='timeOut($event)' (pointCalculed)='sendData()' [(time)]='time'></app-lateral-panel>
+    <app-lateral-panel (timeOut)='timeOut($event)' (pointCalculed)='sendData()' [(title)]='title' [(time)]='time'></app-lateral-panel>
     <!-- <app-counter [counter]="counter"></app-counter> -->
   </div>
   <div class="col-sm-12 col-md-8 col-lg-9" style="border-radius: 25px;margin-top:35px;">

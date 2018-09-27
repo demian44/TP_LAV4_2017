@@ -1,48 +1,39 @@
-<div class="container" style="margin:70px 0 0 -10px">
-  <div class="row">
-    <div class="col-xs-6 col-sm-8 col-lg-2">
-      <div style="margin:50px 5px 10px 40px">
+<div class="containter" style="padding:5px 5px 10px 40px;width:98%">
+  <div class="row" style="margin-top:50px">
+    <div class="col-xs-12 col-sm-12 col-lg-2 col-xl-2">
+      <div>
         <div class="row" style="margin-top:20px">
-          <div class="list-group" style="width:100%">
-            <a href="https://github.com/octaviovillegas"
-             class="list-group-item list-group-item-action list-group-item"
-              style="border-radius:40px">
-              <i class="fa fa-github">
-              </i>
+          <div class="list-group" style="width:95%">
+            <a href="https://github.com/octaviovillegas" class="list-group-item list-group-item-action list-group-item"
+              style="border-radius:2px ;background-color:rgba(36, 38, 43, 0.945);color: orange">
+              <i class="fa fa-github"> </i>
               Github
             </a>
           </div>
         </div>
         <div class="row" style="margin-top:20px">
-          <div class="list-group" style="width:100%">
-            <a routerLink="/QuienSoy" class="list-group-item list-group-item-action list-group-item" style="border-radius:40px">
+          <div class="list-group" style="width:95%">
+            <a routerLink="/QuienSoy" class="list-group-item list-group-item-action" style="border-radius:2px ;background-color:rgba(36, 38, 43, 0.945);color: orange">
               <i class="fa fa-user-circle-o"> </i>
               Quien Soy?
             </a>
           </div>
         </div>
-        <div class="row" style="margin-top:20px;animation-delay: 3s">
-          <div class="list-group" style="width:100%">
-            <a routerLink="/QuienSoy" class="list-group-item list-group-item-action list-group-item" style="border-radius:40px">
+        <div class="row" style="margin-top:20px;animation-delay:3s">
+          <div class="list-group" style="width:95%">
+            <a routerLink="/QuienSoy" class="list-group-item list-group-item-action" style="border-radius:2px ;background-color:rgba(36, 38, 43, 0.945);color: orange">
               <i class="fa fa-cogs">
               </i> Settings </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xs-6 col-sm-8 col-lg-10">
-      <h6 style="font-size:30px" class="text-center">
-
-      </h6>
-      <!-- <ul class="list-group" style="margin-top:10px 0 0 0"> -->
-      <!-- <li class="list-group-item"> -->
-      <button routerLink="/Juegos" class="principal_button">
+    <div class="col-xs-10 col-sm-12 col-lg-10 col-xl-10">
+      <button routerLink="/Juegos" style="width:95%;margin-top:2%" class="principal_button">
         <div class="row">
-          <div class="col-lg-2">
+          <div class="col-lg-2" >
             <div class="media">
-
-              <img src="./assets/imagenes/Videogames.gif" class="media-object imagenDeMenu">
-
+              <img src="./assets/imagenes/Videogames.gif" class="media-object imagenDeMenu imgBtn">
             </div>
           </div>
           <div class="col-lg-10">
@@ -56,15 +47,11 @@
           </div>
         </div>
       </button>
-      <!-- </li> -->
-      <!-- <li class="list-group-item"> -->
-      <button routerLink="/Listado" style="width:100%;margin-top:3%" class="principal_button">
+      <button style="width:95%;margin-top:2%" (click)="go('/Listado')" class="principal_button imgBtn">
         <div class="row">
           <div class="col-lg-2">
             <div class="media">
-
-              <img src="./assets/imagenes/listado.jpg" class="media-object imagenDeMenu">
-
+              <img src="./assets/imagenes/listado.jpg" class="media-object imagenDeMenu imgBtn">
             </div>
           </div>
           <div class="col-lg-10">
@@ -75,16 +62,11 @@
           </div>
         </div>
       </button>
-      <!-- </li> -->
-      <!-- <li class="list-group-item"> -->
-
-      <button routerLink="/Listado" style="width:100%;margin-top:3%" class="principal_button">
+      <button routerLink="/Listado" style="width:95%;margin-top:2%" class="principal_button">
         <div class="row">
           <div class="col-lg-2">
             <div class="media">
-
-              <img src="./assets/imagenes/players.jpg" class="media-object imagenDeMenu">
-
+              <img src="./assets/imagenes/players.jpg" class="media-object imagenDeMenu imgBtn">
             </div>
           </div>
           <div class="col-lg-10">
@@ -95,8 +77,6 @@
           </div>
         </div>
       </button>
-      <!-- </li>
-      </ul> -->
     </div>
   </div>
 </div>

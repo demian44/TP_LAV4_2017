@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
- public status: any = {
+  public status: any = {
     isFirstOpen: true,
     isFirstDisabled: false
   };
-  constructor() {  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
- 
+  go(ruta: string) {
+    this.router.navigate([ruta]);
+  }
+
+
 
 }

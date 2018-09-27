@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div   class="modal fade" [ngClass]='stilePopUp'  id="exampleModal" tabindex="1000"
+<div class="modal fade" [ngClass]='stilePopUp' style="background-color:rgb(31, 35, 53)(0, 47, 255)"  id="exampleModal" tabindex="1000"
   aria-hidden="true" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -14,7 +14,8 @@
         {{messege}}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close()">Close</button>
+        <button type="button" class="btn btn-outline-warning" data-dismiss="modal" (click)="closeGoMenu()">Volver al menú</button>
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="reload()">Volver a Jugar</button>
       </div>
     </div>
   </div>

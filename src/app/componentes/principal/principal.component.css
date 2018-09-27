@@ -16,6 +16,13 @@
     -webkit-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
 -moz-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
 box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
-background-color: rgb(212, 174, 124);
+background-color: rgba(212, 174, 124, 0.849);
 border:0px;
+}
+.imgBtn{
+    -webkit-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: 12px -2px 49px -10px rgba(0,0,0,0.75);
+    box-shadow: 12px -2px 49px -10px rgba(0, 0, 0, 0.596);
+
+    border:0px;
 }

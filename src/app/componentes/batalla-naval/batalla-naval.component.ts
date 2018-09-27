@@ -27,7 +27,8 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
   messege: string;
   time: number = 30;
   points: number;
-
+  title:string = "Batalla Naval";
+  
   private _counter: number;
   private _point: number;
   private _rows: Row[];
@@ -71,6 +72,7 @@ export class BatallaNavalComponent implements OnInit, IBatallaNavalComponent {
     this.messege = "GANASTE";
     this.putShips();
     this.user.won = false;
+    this.user.lose = false;
     this._counter = 15;
     this.user.pointsActualGame = 0;
     this.user.actualGame = "naval";

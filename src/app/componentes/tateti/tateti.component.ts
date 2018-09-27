@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cell, PLAYER_MATCHED } from './cell';
+import { UserService } from '../../servicios/user.service';
+import { User } from '../../clases/user';
 @Component({
   selector: 'app-tateti',
   templateUrl: './tateti.component.html',
@@ -11,15 +13,25 @@ export class TatetiComponent implements OnInit {
   static MACHINE_WON: number = 1;
   turn: boolean;
   cells: Cell[];
+  messege: string;
+  showPopUp: boolean;
   userMatched: number[];
   machineMatched: number[];
   unmatchedCells: number[];
   matchedCells: number[];
   playerWon: number;
-
-  constructor() { }
+  time: number;
+  title:string = "Tateti";
+  constructor(private user: User, private userService: UserService) { }
 
   ngOnInit() {
+    this.user.lose = false;
+    this.user.won = false;
+    this.time = 60;
+    this.user.pointsActualGame = 0;
+    this.user.tateti = Number(localStorage.getItem("tateti"));
+    this.user.actualGame = "tateti";
+
     this.playerWon = TatetiComponent.NOBODY_WON;
     this.unmatchedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     this.matchedCells = [];
@@ -82,12 +94,14 @@ export class TatetiComponent implements OnInit {
         this.turn = true;
         this.removeUnmatch(this.unmatchedCells[index]);
       }
-      else{
-        alert("PERDISTE");
+      else {
+        this.user.lose = true;
+        this.messege = "Perdiste";
+        this.showPopUp = true;
       }
     }
   }
-  
+
   userPlays(matchedIndex: number): void {
     if (this.turn && !this.cells[matchedIndex].matched) {
       this.turn = false;
@@ -95,11 +109,13 @@ export class TatetiComponent implements OnInit {
       this.cells[matchedIndex].player = "O";
       this.userMatched.push(matchedIndex);
       this.checkIfWin(this.userMatched, TatetiComponent.USER_WON);
-      if (this.playerWon ==TatetiComponent.NOBODY_WON) {
+      if (this.playerWon == TatetiComponent.NOBODY_WON) {
         this.removeUnmatch(matchedIndex);
         this.machinePLays();
-      }else{
-        alert("Ganaste");
+      } else {
+        this.user.won = true;
+        this.messege = "Ganaste!";
+        this.showPopUp = true;
       }
     }
   }
@@ -111,6 +127,24 @@ export class TatetiComponent implements OnInit {
         break;
       }
     }
+  }
+
+  timeOut(timeOut): void {
+    if (timeOut) {
+      console.log("timeOut " + timeOut);
+      this.messege = "Se acabó el tiempo";
+      this.showPopUp = true;
+    }
+  }
+
+  sendData() {
+    //alert("Sending");
+    this.user.tateti += this.user.pointsActualGame;
+    this.user.pointsActualGame = this.user.tateti;
+    this.user.actualGame = "tateti";
+    this.user.email = localStorage.getItem("email");
+    localStorage.setItem("tateti", this.user.tateti.toString());
+    this.userService.sendResults(this.user);
   }
 }
 

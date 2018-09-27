@@ -7,45 +7,47 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { promise } from 'selenium-webdriver';
+import { UserService } from '../user.service';
+import { User } from '../../clases/user';
 
 const HOST: string = "http://localhost/WebApi/";
 
 @Injectable()
 export class MiHttpService {
-  constructor(public http: Http) { }
+  constructor(public http: Http, private user: User) { }
 
-  public httpGetP(url: string) {
-    let pepe = this.http
-      .get("http://localhost/WebApi/media/")
-      .toPromise()
-      .then((this.extractData))
-      .catch(this.handleError);
+  public httpGetP(method: string) {
 
-    return this.http
-      .get(url)
-      .toPromise()
-      .then(this.extractData)
-      .catch(this.handleError);
+    let token = "Tokennn";
+    let header: Headers = new Headers();
+    let options: RequestOptions = new RequestOptions();
+    header.append("Content-Type", "application/json");
+    header.append("token", UserService.token);
+    options.headers = header;
+    return this.http.get(HOST + method, options);
   }
 
   public httpPostP(method: string, objeto: any) {
     console.log(objeto);
     let token = "Tokennn";
     let header: Headers = new Headers();
-    let pepe: RequestOptions = new RequestOptions();
-    header.append("Content-Type","application/json");
-    header.append("token", "tokencio");
-    pepe.headers = header;
+    let options: RequestOptions = new RequestOptions();
+    header.append("Content-Type", "application/json");
+    header.append("token", UserService.token);
+    options.headers = header;
     console.log("this.http");
-    console.log(this.http); 
+    console.log(this.http);
     console.log("this.http");
-    return this.http.post(HOST + method, objeto, pepe);
-
-
+    return this.http.post(HOST + method, objeto, options);
   }
 
   public httpGetO(url: string): Observable<Response> {
-    return this.http.get(url)
+    let header: Headers = new Headers();
+    let options: RequestOptions = new RequestOptions();
+    header.append("Content-Type", "application/json");
+    header.append("token", UserService.token);
+    options.headers = header;
+    return this.http.get(url,options)
       .map((res: Response) => res.json())
       .catch((err: any) => Observable.throw(err.json().error || 'Server error'));
   }

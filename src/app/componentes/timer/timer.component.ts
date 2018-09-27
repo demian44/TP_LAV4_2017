@@ -26,7 +26,7 @@ export class TimerComponent implements OnInit {
   runTime(time: number) {
     this.time = time;
     setInterval(() => {
-      if (!this.user.won) {
+      if (!this.user.won && !this.user.lose) {
         if (this.time > 0)
           this.time--;
         else if (this.counterFlag && this.time == 0) {
@@ -36,9 +36,9 @@ export class TimerComponent implements OnInit {
           this.user.lose = true;
         }
       }
-      else if(this.pointFlag) {
+      else if (this.pointFlag) {  
         this.pointFlag = false;
-        this.user.pointsActualGame += (this.time / 50);
+        this.user.pointsActualGame += this.user.won ? (this.time / 50) : (this.time / (-50));
         this.time = 0;
         this.pointCalculed.emit();
       }

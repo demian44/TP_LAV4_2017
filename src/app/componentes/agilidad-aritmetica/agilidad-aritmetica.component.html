@@ -1,10 +1,10 @@
 <app-pop-up [(showPopUp)]='showPopUp' [(messege)]='messege' [(success)]='success'></app-pop-up>
 <div class="row" style="height:400px;margin-top:60px">
   <div class="col-3">
-    <app-lateral-panel (timeOut)='timeOut($event)' (pointCalculed)='sendData()' [(time)]='time'></app-lateral-panel>
+    <app-lateral-panel (timeOut)='timeOut($event)' [(title)]='title' (pointCalculed)='sendData()' [(time)]='time'></app-lateral-panel>
     <!-- <app-counter [counter]="counter"></app-counter> -->
   </div>
-  <div class="col-9" style="border-radius: 25px">
+  <div class="col-9" style="border-radius: 25px;margin-top:30px;">
     <div class="row gameBox" style="Margin:0% 5% 0 1%;width: 90%;border-radius: 5px;">
       <div class="col-4" style="font-size:34px;text-align:center;cursor:pointer;outline:none;color:#fff;">
         <h2>{{juegosAgilidad[0].numOne}}{{juegosAgilidad[0].operator}}{{juegosAgilidad[0].numTwo}}</h2>

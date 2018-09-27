@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class LateralPanelComponent implements OnInit {
   @Input() time: number;
+  @Input() title: string = "Tu juego";
   gameFinished: boolean;
   messegeTime: string;
   constructor() { }

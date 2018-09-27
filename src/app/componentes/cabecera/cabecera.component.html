@@ -1,14 +1,11 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top headerShadow"
- style="background-image:url('./assets/imagenes/cabecera.jpg');padding: 1% 0  1% 0">
-  <div class="col-sm-12 col-md-5 col-lg-3 col-xl-5">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top headerShadow" style="background-image:url('./assets/imagenes/cabecera.jpg');padding: 1% 0  1% 0;margin-bottom:1%">
+  <div class="col-12">
     <a class="navbar-brand tatetiValue" style="color:orange;font-size:30px;font-family: Tahoma, Geneva, sans-serif;">
       SALA DE JUEGOS</a>
-    <img src="./assets/imagenes/phantom4.png" class="tatetiValue"
-    style="height:35px;margin-block-end:0px;margin: -10px 0 0 0 ">
-  </div>
-  <div class="col-sm-12 col-md-7 col-lg-9 col-xl-7" *ngIf="incrementService.contador">
-    <div class="pull-right">
-      <label style="margin:5px 10px 0 0 ;color:orange;text-shadow: 2px 2px 2px rgb(0, 0, 0);font-size:15px">{{incrementService.email}}
+    <img src="./assets/imagenes/phantom4.png" class="tatetiValue" style="height:35px;margin-block-end:0px;margin: -10px 0 0 0 ">
+    <div class="pull-right" *ngIf="incrementService.contador">
+      <label style="margin:5px 10px 0 0 ;color:orange;text-shadow: 2px 2px 2px rgb(0, 0, 0);font-size:15px">
+        {{incrementService.email}}
       </label>
       <div class="btn-group  pull-right" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-outline-warning" (click)="menuPrincipal()">Menu Principal</button>

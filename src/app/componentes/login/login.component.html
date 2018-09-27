@@ -1,27 +1,27 @@
 <div class="login" style="margin-top:80px;margin-bottom: 20px;height: 100%">
-  <div style="padding:20px;margin:15px;background-color: rgba(18, 17, 29, 0.911);height:80%;border-radius:8px" 
-  class="">
-    <div class="form-group has-error has-feedback"
-     style="color:orange;font-size:15px;font-family: Tahoma, Geneva, sans-serif;">
+  <div style="padding:20px;margin:15px; background-color:rgb(24, 33, 44);height:80%;border-radius:8px" class="">
+    <div class="form-group has-error has-feedback" style="color:orange;font-size:15px;font-family: Tahoma, Geneva, sans-serif;">
+
       <label>Email</label>
-      <input type="text" class="form-control" placeholder="Email" [(ngModel)]="this.user.email" name="email" required>
-      <label>Clave</label>
-      <input type="password" class="form-control  has-error" placeholder="Clave" [(ngModel)]="this.user.password" name="psw"
-        required>
+      <div class="form-group">
+        <label for=""></label>
+        <input type="email" (keydown)='emailHelp=""' class="form-control" name="email" [(ngModel)]="this.user.email" aria-describedby="emailHelpId"
+          placeholder="">
+        <small id="emailHelpId" class="form-text text-muted">{{emailHelp}}</small>
+        <label for="">Clave</label>
+        <input type="password"(keydown)='claveHelp=""' class="form-control" [(ngModel)]="user.password  " name="psw" placeholder="clave">
+        <small id="claveHelpId" class="form-text text-muted">{{claveHelp}}</small>
+      </div>
+      <!-- <input type="email" class="form-control" placeholder="Email" name="email" required> -->
+      <div class="btn-group" style="width:100%;margin-top:5%" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-warning" (click)="register()">Registrarse</button>
+        <button type="button" class="btn btn-outline-warning" (click)="login()">Login</button>
+      </div>
     </div>
 
-    <div class="btn-group" style="width:100%;margin-top:5%" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-outline-warning">Registrarse</button>
-      <button type="button" class="btn btn-outline-warning" (click)="login()">Login</button>
-    </div>
-    
-    <img src="./assets/imagenes/phantom.png" class="tatetiValue fa-pull-right" alt="25px" 
-    style="height:55px;margin-block-end:0px;margin:40px 1% 0px 0">
-    <img src="./assets/imagenes/phantom.png" class="tatetiValue fa-pull-right" alt="25px" 
-    style="height:55px;margin-block-end:0px;margin:40px 2% 0px 0">
-    <img src="./assets/imagenes/phantom.png" class="tatetiValue fa-pull-right" alt="25px" 
-    style="height:55px;margin-block-end:0px;margin:40px 3% 0px 0">
-    <img src="./assets/imagenes/phantom.png" class="tatetiValue fa-pull-right" alt="25px" 
-    style="height:55px;margin-block-end:0px;margin:40px 4% 0px 0">
+    <img src="./assets/imagenes/phantom.png" class="tatetiValue fa-pull-right" alt="25px" style="height:55px;margin-block-end:0px;margin:40px 1% 0px 0">
+    <img src="./assets/imagenes/phantom.png" class="tatetiValue fa-pull-right" alt="25px" style="height:55px;margin-block-end:0px;margin:40px 2% 0px 0">
+    <img src="./assets/imagenes/phantom.png" class="tatetiValue fa-pull-right" alt="25px" style="height:55px;margin-block-end:0px;margin:40px 3% 0px 0">
+    <img src="./assets/imagenes/phantom.png" class="tatetiValue fa-pull-right" alt="25px" style="height:55px;margin-block-end:0px;margin:40px 4% 0px 0">
   </div>
 </div>

@@ -18,19 +18,20 @@ export class AdivinaElNumeroComponent implements OnInit {
   ocultarVerificar: boolean;
   messege: string;
   showPopUp: boolean;
-
+  title = "Adivina el número";
   constructor(private user: User, private userService: UserService) {
     this.ocultarVerificar = false;
   }
 
   ngOnInit() {
-    this.time = 50;
     this.nuevoJuego = new JuegoAdivina();
     console.info("numero Secreto:", this.nuevoJuego.numeroSecreto);
+    this.time = 50;
     this.user.won = false;
+    this.user.lose = false;
     this.user.pointsActualGame = 0;
     this.user.numero = Number(localStorage.getItem("numero"));
-    this.user.won = false;
+    this.user.actualGame = "numero";
     this.messege = "Ganaste!!";
     this.showPopUp = false;
   }
@@ -111,7 +112,7 @@ export class AdivinaElNumeroComponent implements OnInit {
   }
 
   sendData() {
-    alert("Sending");
+    //alert("Sending");
     this.user.numero += this.user.pointsActualGame;
     this.user.pointsActualGame = this.user.numero;
     this.user.actualGame = "numero";

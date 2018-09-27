@@ -17,14 +17,14 @@ export class CabeceraComponent implements OnInit, OnChanges {
   constructor(private incrementService: IncrementService, private router: Router) {
   }
   salir() {
-    alert("salio");
-    localStorage.setItem("loged","false");
+    // alert("salio");
+    localStorage.setItem("loged", "false");
     this.router.navigate(['/Login']);
     this.incrementService.singInOut();
   }
-  public menuPrincipal(){
-    localStorage.setItem("loged","false");
-    this.router.navigate(['/Principal']);    
+  public menuPrincipal() {
+    localStorage.setItem("loged", "false");
+    this.router.navigate(['/Principal']);
   }
 
   ngOnInit() {
@@ -32,12 +32,11 @@ export class CabeceraComponent implements OnInit, OnChanges {
       this.incrementService.contador = true;
       this.incrementService.email = localStorage.getItem("email");
     }
+    else this.router.navigate(['/Login']);
   }
 
   ngOnChanges(): void {
-    if (!this.incrementService.contador) {
-      this.router.navigate(['/Login']);
-    }
+    if (!this.incrementService.contador) this.router.navigate(['/Login']);
   }
 
 }
